@@ -8,6 +8,6 @@ export default () => (
   <div className={styles.Main}>
     <Head title="Home" />
     <img className={styles.Logo} src="./BKMagLogo_Pink.PNG" />
-    <h1 className={styles.ComingSoon}>Coming Soon</h1>
+    <h1 className={styles.ComingSoon}>This is the staging site</h1>
   </div>
 );
