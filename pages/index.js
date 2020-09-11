@@ -36,13 +36,12 @@ const Home = ({ doc }) => {
           src={doc.data["feature-story-image"].url}
           alt={doc.data["image-description"]}
         />
-        <div className={styles.FeatureWrapper}>
-          <div className={styles.FeatureStoryMobileDetails}>
-            <h1 className={styles.FeatureTitle}>
-              {doc.data["feature-story-title"][0].text}
-            </h1>
-            <p>{doc.data["feature-story-description"][0].text}</p>
-          </div>
+
+        <div className={styles.FeatureStoryMobileDetails}>
+          <h1 className={styles.FeatureTitle}>
+            {doc.data["feature-story-title"][0].text}
+          </h1>
+          <p>{doc.data["feature-story-description"][0].text}</p>
         </div>
       </div>
     </div>
