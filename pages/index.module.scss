@@ -8,6 +8,7 @@
 }
 
 .FeatureStory {
+  font-family: $slim-joe;
   display: none;
   width: 100%;
   min-height: calc(100vh - 80px);
@@ -21,6 +22,7 @@
 
 .FeatureStoryMobile {
   color: whitesmoke;
+  font-family: $slim-joe;
   &Image {
     width: 100%;
   }
@@ -40,7 +42,7 @@
   position: absolute;
   bottom: 0;
   color: whitesmoke;
-  max-width: 450px;
+  max-width: 475px;
   background-color: black;
   padding: 20px;
   border: 6px solid $hollywood-cerise;
@@ -50,6 +52,8 @@
 .FeatureTitle {
   color: $hollywood-cerise;
   margin: 0 0 24px;
+  font-size: 24px;
+  font-family: $big-john;
 }
 
 @include breakpoint(medium) {
@@ -59,5 +63,9 @@
 
   .FeatureStoryMobile {
     display: none;
+  }
+
+  .FeatureTitle {
+    font-size: 32px;
   }
 }
