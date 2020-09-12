@@ -1,6 +1,7 @@
+import Link from "next/link";
 import cx from "classnames";
-import Link from "../components/Link";
 import Head from "../components/head";
+import Nav from "../components/nav";
 import { H1, Body } from "../components/Typography";
 
 import styles from "./index.module.scss";
@@ -30,21 +31,21 @@ const Home = (props) => {
               </Body>
             </div>
           </div>
-          <div className={styles.FeatureStoryMobile}>
-            <img
-              className={styles.FeatureStoryMobileImage}
-              src={props.data["feature-story-image"].url}
-              alt={props.data["image-description"]}
-            />
-            <div className={styles.FeatureStoryMobileDetails}>
-              <h4 className={styles.FeatureStoryHeading}>Feature Story</h4>
-              <h1 className={styles.FeatureTitle}>
-                {props.data.feature_story.data.title}
-              </h1>
-              <p>{props.data.feature_story.data.preview[0].text}</p>
-            </div>
-          </div>
         </Link>
+      </div>
+      <div className={styles.FeatureStoryMobile}>
+        <img
+          className={styles.FeatureStoryMobileImage}
+          src={props.data["feature-story-image"].url}
+          alt={props.data["image-description"]}
+        />
+
+        <div className={styles.FeatureStoryMobileDetails}>
+          <h1 className={styles.FeatureTitle}>
+            {props.data["feature-story-title"][0].text}
+          </h1>
+          <p>{props.data["feature-story-description"][0].text}</p>
+        </div>
       </div>
     </div>
   );
