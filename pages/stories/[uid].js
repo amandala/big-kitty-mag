@@ -49,7 +49,7 @@ const Story = (props) => {
   return null;
 };
 
-export const getServerSideProps = async (ctx) => {
+export const getStaticProps = async (ctx) => {
   const req = ctx.req;
 
   console.log(req);

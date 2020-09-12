@@ -51,7 +51,7 @@ const Home = ({ doc }) => {
   );
 };
 
-Home.getInitialProps = async (ctx) => {
+Home.getStaticProps = async (ctx) => {
   const req = ctx.req;
   const home = await Client(req).getSingle("home-page", {
     fetchLinks: ["article.title", "article.preview"],
