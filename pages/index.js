@@ -1,19 +1,17 @@
 import Link from "next/link";
 import cx from "classnames";
 import Head from "../components/head";
-import Header from "../components/Header";
 import Nav from "../components/nav";
+import { H1, Body } from "../components/Typography";
 
 import styles from "./index.module.scss";
 
 import { Client } from "../prismic-configuration.js";
 
 const Home = ({ doc }) => {
-  const pink = doc.data.header_color === "pink";
   console.log(JSON.stringify(doc));
   return (
     <div className={styles.Main}>
-      <Header pink={pink} />
       <Head title="Home" />
       <div
         className={styles.FeatureStory}
@@ -21,14 +19,19 @@ const Home = ({ doc }) => {
           backgroundImage: `url(${doc.data["feature-story-image"].url})`,
         }}
       >
-        <div className={styles.FeatureWrapper}>
-          <div className={styles.FeatureDetails}>
-            <h1 className={styles.FeatureTitle}>
-              {doc.data["feature-story-title"][0].text}
-            </h1>
-            <p>{doc.data["feature-story-description"][0].text}</p>
+        <Link href={`/stories/${doc.data.feature_story.uid}`}>
+          <div className={styles.FeatureWrapper}>
+            <div className={styles.FeatureDetails}>
+              <h4 className={styles.FeatureStoryHeading}>Feature Story</h4>
+              <H1 className={styles.FeatureTitle}>
+                {doc.data.feature_story.data.title}
+              </H1>
+              <Body className={styles.Preview}>
+                {doc.data.feature_story.data.preview[0].text}
+              </Body>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
       <div className={styles.FeatureStoryMobile}>
         <img
@@ -50,7 +53,9 @@ const Home = ({ doc }) => {
 
 Home.getInitialProps = async (ctx) => {
   const req = ctx.req;
-  const home = await Client(req).getSingle("home-page");
+  const home = await Client(req).getSingle("home-page", {
+    fetchLinks: ["article.title", "article.preview"],
+  });
   return {
     doc: home,
   };

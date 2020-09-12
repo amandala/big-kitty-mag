@@ -1,9 +1,15 @@
 // import App from 'next/app'
+import Header from "../components/Header";
 
 import "../styles/index.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <div>
+      <Header pink={true} />
+      <Component {...pageProps} />
+    </div>
+  );
 }
 
 // Only uncomment this method if you have blocking data requirements for

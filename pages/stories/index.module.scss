@@ -1,0 +1,30 @@
+@import "../../styles//variables";
+
+.Page {
+  min-height: 100vh;
+}
+
+.Wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.Header {
+  margin-bottom: 32px;
+}
+
+.Photo {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.Heading {
+  margin-bottom: 16px;
+}
+
+@include breakpoint(medium) {
+  .Wrapper {
+    padding: 32px 0;
+  }
+}
