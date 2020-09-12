@@ -54,7 +54,7 @@ export const getStaticProps = async (ctx) => {
 
   console.log(req);
 
-  const home = await Client(req).getByUID("article", req.url.split("/")[2], {
+  const home = await Client(req).getByUID("article", ctx.params.uid, {
     fetchLinks: ["author.name"],
   });
   return {
