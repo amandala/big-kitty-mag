@@ -46,6 +46,7 @@ const Story = (props) => {
       </div>
     );
   }
+  return null;
 };
 
 export const getServerSideProps = async (ctx) => {
