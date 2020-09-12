@@ -49,7 +49,7 @@ const Story = (props) => {
   return null;
 };
 
-export const getStaticProps = async (ctx) => {
+export async function getStaticProps(ctx) {
   const req = ctx.req;
 
   console.log(req);
@@ -60,6 +60,6 @@ export const getStaticProps = async (ctx) => {
   return {
     props: home,
   };
-};
+}
 
 export default Story;

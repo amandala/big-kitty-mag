@@ -51,7 +51,7 @@ const Home = (props) => {
   );
 };
 
-export async getStaticProps = async (ctx) => {
+export async function getStaticProps(ctx) {
   const req = ctx.req;
   const home = await Client(req).getSingle("home-page", {
     fetchLinks: ["article.title", "article.preview"],
@@ -59,6 +59,6 @@ export async getStaticProps = async (ctx) => {
   return {
     props: home,
   };
-};
+}
 
 export default Home;
