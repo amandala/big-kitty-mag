@@ -23,9 +23,13 @@
 
 .Logo {
   max-width: 150px;
+
+  :hover {
+    cursor: $cat-cursor;
+  }
 }
 
-@include breakpoint(medium) {
+@include breakpoint(large) {
   .Header {
     padding: 0;
   }
