@@ -49,6 +49,12 @@
   }
 }
 
+.HoverWrapper {
+  &:hover {
+    cursor: $cat-cursor;
+  }
+}
+
 .FeatureDetails {
   margin: 0 24px 42px;
   position: absolute;

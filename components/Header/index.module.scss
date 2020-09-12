@@ -23,6 +23,10 @@
 
 .Logo {
   max-width: 150px;
+
+  &:hover {
+    cursor: $cat-cursor;
+  }
 }
 
 @include breakpoint(medium) {
