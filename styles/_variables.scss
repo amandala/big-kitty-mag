@@ -1,0 +1,19 @@
+$hollywood-cerise: #d60080;
+
+$breakpoints: (
+  base: 0,
+  small: 540px,
+  medium: 768px,
+  large: 1024px,
+  xlarge: 1200px,
+);
+
+@mixin breakpoint($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+$big-john: "BigJohn", Helvetica, Roboto;
+$slim-joe: "SlimJoe", Helvetica, Roboto;

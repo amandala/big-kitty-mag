@@ -1,22 +1,71 @@
+@import "../styles/variables";
+
 .Main {
   background-color: black;
-  background-image: url("/12624.jpg");
   height: 100%;
   min-height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
-.Logo {
+.FeatureStory {
+  font-family: $slim-joe;
+  display: none;
   width: 100%;
-  max-width: 600px;
+  min-height: calc(100vh - 80px);
+  position: relative;
+  flex-direction: row-reverse;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: whitesmoke;
+}
+
+.FeatureStoryMobile {
+  color: whitesmoke;
+  font-family: $slim-joe;
+  &Image {
+    width: 100%;
+  }
+
+  &Details {
+    padding: 20px 30px;
+  }
+}
+
+.FeatureWrapper {
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.ComingSoon {
+.FeatureDetails {
+  margin: 0 24px 42px;
+  position: absolute;
+  bottom: 0;
   color: whitesmoke;
-  display: none;
+  max-width: 475px;
+  background-color: black;
+  padding: 20px;
+  border: 6px solid $hollywood-cerise;
+  border-radius: 6px;
+}
+
+.FeatureTitle {
+  color: $hollywood-cerise;
+  margin: 0 0 24px;
+  font-size: 24px;
+  font-family: $big-john;
+}
+
+@include breakpoint(medium) {
+  .FeatureStory {
+    display: flex;
+  }
+
+  .FeatureStoryMobile {
+    display: none;
+  }
+
+  .FeatureTitle {
+    font-size: 32px;
+  }
 }
