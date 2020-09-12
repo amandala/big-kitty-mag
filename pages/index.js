@@ -19,7 +19,7 @@ const Home = ({ doc }) => {
           backgroundImage: `url(${doc.data["feature-story-image"].url})`,
         }}
       >
-        <a href={`/stories/${doc.data.feature_story.uid}`}>
+        <Link href={`/stories/${doc.data.feature_story.uid}`}>
           <div className={styles.FeatureWrapper}>
             <div className={styles.FeatureDetails}>
               <h4 className={styles.FeatureStoryHeading}>Feature Story</h4>
@@ -31,7 +31,7 @@ const Home = ({ doc }) => {
               </Body>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
       <div className={styles.FeatureStoryMobile}>
         <img
