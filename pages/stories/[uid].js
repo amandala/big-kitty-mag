@@ -36,7 +36,13 @@ const Story = (props) => {
                   return <H2 className={styles.Heading}>{s.text}</H2>;
                 }
                 if (s.type === "image") {
-                  return <img className={styles.Photo} src={s.url} alt="Alt" />;
+                  return (
+                    <img
+                      className={styles.PhotoContent}
+                      src={s.url}
+                      alt="Alt"
+                    />
+                  );
                 }
                 return <Body>{s.text}</Body>;
               })}

@@ -16,14 +16,22 @@
 
 .Photo {
   width: 100%;
+}
+
+.PhotoContent {
+  width: 100%;
+  margin: 32px 0;
+}
+
+.MainPhotoWrapper {
   margin-bottom: 32px;
 }
 
 .Heading {
-  margin-bottom: 16px;
+  margin: 32px 0 32px;
 }
 
-@include breakpoint(medium) {
+@include breakpoint(large) {
   .Wrapper {
     padding: 32px 0;
   }
