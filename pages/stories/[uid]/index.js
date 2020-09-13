@@ -1,17 +1,17 @@
 import { useRouter } from "next/router";
 import styles from "./index.module.scss";
-import { H1, Meta, H5, H3, H2, Body } from "../../components/Typography";
-import { Client } from "../../prismic-configuration.js";
+import Header from "../../../components/Header";
+import { H1, Meta, H5, H3, H2, Body } from "../../../components/Typography";
+import { Client } from "../../../prismic-configuration.js";
 
 const Story = (props) => {
   const router = useRouter();
   const { uid } = router.query;
 
-  // console.log(doc.data.main_photo.dimensions);
-
   if (props.data) {
     return (
       <div className={styles.Page}>
+        <Header pink={true} />
         <main className={styles.Wrapper}>
           <div className={styles.Header}>
             <H1>{props.data.title}</H1>
@@ -28,7 +28,6 @@ const Story = (props) => {
             </div>
             <div>
               {props.data.story.map((s) => {
-                console.log(s);
                 if (s.type === "heading3") {
                   return <H3 className={styles.Heading}>{s.text}</H3>;
                 }
@@ -57,8 +56,6 @@ const Story = (props) => {
 
 export async function getServerSideProps(ctx) {
   const req = ctx.req;
-
-  console.log(req);
 
   const home = await Client(req).getByUID("article", ctx.params.uid, {
     fetchLinks: ["author.name"],

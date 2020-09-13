@@ -6,7 +6,6 @@ import "../styles/index.css";
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <Header pink={true} />
       <Component {...pageProps} />
     </div>
   );

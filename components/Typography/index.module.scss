@@ -9,26 +9,32 @@
 .H1 {
   @extend %shared;
   color: $hollywood-cerise;
+  font-size: 24px;
+  line-height: 30px;
 }
 
 .H2 {
   @extend %shared;
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .H3 {
   @extend %shared;
   color: $hollywood-cerise;
   margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .H4 {
   @extend %shared;
+  font-size: 16px;
 }
 
 .H5 {
   @extend %shared;
   font-family: $kumbh-sans;
+  font-size: 14px;
 }
 
 .H6 {
@@ -41,6 +47,8 @@
   font-size: 16px;
   line-height: 28px;
   margin-bottom: 16px;
+  letter-spacing: 1px;
+  font-weight: 400;
 
   &:last-child {
     margin-bottom: 0;
@@ -69,4 +77,23 @@
   line-height: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+@include breakpoint(medium) {
+  .H1 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .H2 {
+    font-size: 24px;
+  }
+
+  .H3 {
+    font-size: 22px;
+  }
+
+  .Body {
+    font-size: 20px;
+  }
 }

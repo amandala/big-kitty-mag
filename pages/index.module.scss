@@ -70,7 +70,6 @@
 .FeatureTitle {
   color: $hollywood-cerise;
   margin: 0 0 10px;
-  font-size: 24px;
   font-family: $big-john;
 }
 
@@ -85,5 +84,9 @@
 
   .FeatureTitle {
     font-size: 32px;
+  }
+
+  .Main {
+    min-height: unset;
   }
 }

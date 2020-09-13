@@ -16,7 +16,6 @@
 
   &Content {
     width: 100%;
-    max-width: 900px;
     margin: 0 auto;
   }
 }
@@ -26,11 +25,5 @@
 
   &:hover {
     cursor: $cat-cursor;
-  }
-}
-
-@include breakpoint(large) {
-  .Header {
-    padding: 0;
   }
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import cx from "classnames";
 import Head from "../components/head";
+import Header from "../components/Header";
 import Nav from "../components/nav";
 import { H1, Body } from "../components/Typography";
 
@@ -9,10 +10,10 @@ import styles from "./index.module.scss";
 import { Client } from "../prismic-configuration.js";
 
 const Home = (props) => {
-  console.log(JSON.stringify(props));
   return (
     <div className={styles.Main}>
       <Head title="Home" />
+      <Header pink={props.data.header_color === "pink"} />
       <div
         className={styles.FeatureStory}
         style={{
