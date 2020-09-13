@@ -30,14 +30,15 @@
 }
 
 .FeatureStoryMobile {
+  font-family: $kumbh-sans;
   color: whitesmoke;
-  font-family: $slim-joe;
   &Image {
     width: 100%;
   }
 
   &Details {
     padding: 20px 30px;
+    border-bottom: 6px solid $hollywood-cerise;
   }
 }
 

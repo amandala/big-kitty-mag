@@ -44,6 +44,7 @@ const Home = (props) => {
             />
 
             <div className={styles.FeatureStoryMobileDetails}>
+              <h4 className={styles.FeatureStoryHeading}>Feature Story</h4>
               <H1 className={styles.FeatureTitle}>
                 {props.data.feature_story.data.title}
               </H1>
