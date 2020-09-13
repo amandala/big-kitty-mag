@@ -1,4 +1,4 @@
-import { H1, H2, Body, Meta } from "../../components/Typography";
+import { H1, H2, BodySmall, Meta } from "../../components/Typography";
 import Link from "next/link";
 import Prismic from "prismic-javascript";
 import Header from "../../components/Header";
@@ -25,20 +25,19 @@ const Stories = (props) => {
               <div className={styles.StoryDetails}>
                 <div className={styles.Preview}>
                   <H2>{story.data.title}</H2>
-                  <Body>
-                    {story.data.story.slice(0, 2).map((chunk) => {
-                      console.log(chunk);
-                      return <Body>{chunk.text}</Body>;
-                    })}
-                  </Body>
+                  {story.data.story.slice(0, 2).map((chunk) => {
+                    console.log(chunk);
+                    return <BodySmall>{chunk.text}</BodySmall>;
+                  })}
                 </div>
                 <Meta className={styles.ReadMore}> Keep Reading</Meta>
               </div>
-
-              <img
-                className={styles.StoryPhoto}
-                src={story.data.main_photo.url}
-              />
+              <div className={styles.ImageWrapper}>
+                <img
+                  className={styles.StoryPhoto}
+                  src={story.data.main_photo.url}
+                />
+              </div>
             </main>
           </Link>
         );

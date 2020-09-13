@@ -36,6 +36,11 @@
   }
 }
 
+.ImageWrapper {
+  display: flex;
+  align-items: center;
+}
+
 .StoryDetails {
   padding: 24px;
   display: flex;
@@ -53,7 +58,7 @@
 }
 
 .Preview {
-  margin: 24px;
+  margin: 0px 24px 16px;
 }
 
 @include breakpoint(large) {
