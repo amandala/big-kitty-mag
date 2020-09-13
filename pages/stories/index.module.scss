@@ -52,6 +52,10 @@
   justify-self: flex-end;
 }
 
+.Preview {
+  margin: 24px;
+}
+
 @include breakpoint(large) {
   .Wrapper {
     padding: 32px 0;
