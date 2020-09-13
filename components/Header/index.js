@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import Link from "next/link";
+import { H2 } from "../../components/Typography";
 import styles from "./index.module.scss";
 
 const Header = ({ pink }) => {
@@ -14,6 +15,11 @@ const Header = ({ pink }) => {
             alt="Big Kitty Logo"
           />
         </Link>
+        <div>
+          <Link href="/stories">
+            <span className={styles.NavLink}>Stories</span>
+          </Link>
+        </div>
       </div>
     </header>
   );

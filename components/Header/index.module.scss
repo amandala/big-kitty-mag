@@ -17,13 +17,32 @@
   &Content {
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
   }
+}
+
+.NavLink {
+  margin: 0;
+  padding: 0;
+  font-family: $big-john;
+  cursor: $cat-cursor;
+  color: black;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .Logo {
   max-width: 150px;
+  margin-right: 32px;
 
   &:hover {
     cursor: $cat-cursor;
+  }
+}
+
+@include breakpoint(medium) {
+  .NavLink {
+    font-size: 22px;
   }
 }

@@ -12,8 +12,8 @@ const Stories = (props) => {
       <div className={styles.Banner}>
         <div className={styles.Heading}>
           <H1 className={styles.Header}>
-            Purr-ruse stories covering Calgary's Underground Arts & Culture
-            scene
+            Purr-ruse stories covering Calgary's Underground Arts, Music &
+            Culture
           </H1>
         </div>
       </div>
@@ -23,9 +23,9 @@ const Stories = (props) => {
           <Link href={`/stories/${story.uid}`}>
             <main className={styles.StoryWrapper}>
               <div className={styles.StoryDetails}>
-                <div>
+                <div className={styles.Preview}>
                   <H2>{story.data.title}</H2>
-                  <Body className={styles.Preview}>
+                  <Body>
                     {story.data.story.slice(0, 2).map((chunk) => {
                       console.log(chunk);
                       return <Body>{chunk.text}</Body>;

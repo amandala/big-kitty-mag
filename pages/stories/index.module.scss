@@ -62,11 +62,18 @@
   }
 
   .StoryWrapper {
-    flex-direction: row-reverse;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .StoryPhoto {
-    width: auto;
-    max-height: 300px;
+  .Preview {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ReadMore {
+    align-self: flex-end;
   }
 }
