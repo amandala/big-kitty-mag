@@ -22,7 +22,7 @@ const StoriesList = ({ stories }) => {
               <div className={styles.StoryDetails}>
                 <div className={styles.Preview}>
                   <H2>{story.data.title}</H2>
-                  {story.data.story.slice(0, 2).map((chunk) => {
+                  {story.data.story.slice(0, 1).map((chunk) => {
                     console.log(chunk);
                     return <BodySmall>{chunk.text}</BodySmall>;
                   })}
