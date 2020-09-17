@@ -1,7 +1,15 @@
 import { useRouter } from "next/router";
 import styles from "./index.module.scss";
 import Header from "../../../components/Header";
-import { H1, Meta, H5, H3, H2, Body } from "../../../components/Typography";
+import {
+  H1,
+  Meta,
+  H5,
+  H3,
+  H2,
+  Body,
+  BodyExtraSmall,
+} from "../../../components/Typography";
 import { Client } from "../../../prismic-configuration.js";
 
 const Story = (props) => {
@@ -36,11 +44,17 @@ const Story = (props) => {
                 }
                 if (s.type === "image") {
                   return (
-                    <img
-                      className={styles.PhotoContent}
-                      src={s.url}
-                      alt="Alt"
-                    />
+                    <div>
+                      {console.log(s)}
+                      <img
+                        className={styles.PhotoContent}
+                        src={s.url}
+                        alt={s.alt}
+                      />
+                      <BodyExtraSmall className={styles.PhotoAlt}>
+                        {s.alt}
+                      </BodyExtraSmall>
+                    </div>
                   );
                 }
                 return <Body>{s.text}</Body>;

@@ -15,7 +15,6 @@ const StoriesList = ({ stories }) => {
         </div>
       </div>
       {stories.results.map((story) => {
-        console.log(story);
         return (
           <Link href={`/stories/${story.uid}`}>
             <main className={styles.StoryWrapper}>
