@@ -68,7 +68,9 @@ export async function getStaticProps(ctx) {
   });
 
   const stories = await Client(req)
-    .query(Prismic.Predicates.at("document.type", "article"), {})
+    .query(Prismic.Predicates.at("document.type", "article"), {
+      orderings: "[my.article.released desc]",
+    })
     .then(function (response) {
       return response;
       // response is the response object, response.results holds the documents
