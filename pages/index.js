@@ -1,60 +1,62 @@
 import Link from "next/link";
+import Prismic from "prismic-javascript";
 import cx from "classnames";
 import Head from "../components/head";
 import Header from "../components/Header";
 import Nav from "../components/nav";
 import { H1, Body } from "../components/Typography";
-
+import StoriesList from "../components/StoriesList";
 import styles from "./index.module.scss";
 
 import { Client } from "../prismic-configuration.js";
 
-const Home = (props) => {
+const Home = ({ home, stories }) => {
   return (
     <div className={styles.Main}>
       <Head title="Home" />
-      <Header pink={props.data.header_color === "pink"} />
+      <Header pink={home.data.header_color === "pink"} />
       <div
         className={styles.FeatureStory}
         style={{
-          backgroundImage: `url(${props.data["feature-story-image"].url})`,
+          backgroundImage: `url(${home.data["feature-story-image"].url})`,
         }}
       >
-        <Link href={`/stories/${props.data.feature_story.uid}`}>
+        <Link href={`/stories/${home.data.feature_story.uid}`}>
           <div className={styles.FeatureWrapper}>
             <div className={styles.FeatureDetails}>
               <h4 className={styles.FeatureStoryHeading}>Feature Story</h4>
               <H1 className={styles.FeatureTitle}>
-                {props.data.feature_story.data.title}
+                {home.data.feature_story.data.title}
               </H1>
               <Body className={styles.Preview}>
-                {props.data.feature_story.data.preview[0].text}
+                {home.data.feature_story.data.preview[0].text}
               </Body>
             </div>
           </div>
         </Link>
       </div>
       <div className={styles.FeatureStoryMobile}>
-        <Link href={`/stories/${props.data.feature_story.uid}`}>
+        <Link href={`/stories/${home.data.feature_story.uid}`}>
           <div className={styles.HoverWrapper}>
             <img
               className={styles.FeatureStoryMobileImage}
-              src={props.data["feature-story-image"].url}
-              alt={props.data["image-description"]}
+              src={home.data["feature-story-image"].url}
+              alt={home.data["image-description"]}
             />
 
             <div className={styles.FeatureStoryMobileDetails}>
               <h4 className={styles.FeatureStoryHeading}>Feature Story</h4>
               <H1 className={styles.FeatureTitle}>
-                {props.data.feature_story.data.title}
+                {home.data.feature_story.data.title}
               </H1>
               <Body className={styles.Preview}>
-                {props.data.feature_story.data.preview[0].text}
+                {home.data.feature_story.data.preview[0].text}
               </Body>
             </div>
           </div>
         </Link>
       </div>
+      <StoriesList stories={stories} />
     </div>
   );
 };
@@ -64,8 +66,16 @@ export async function getStaticProps(ctx) {
   const home = await Client(req).getSingle("home-page", {
     fetchLinks: ["article.title", "article.preview"],
   });
+
+  const stories = await Client(req)
+    .query(Prismic.Predicates.at("document.type", "article"), {})
+    .then(function (response) {
+      return response;
+      // response is the response object, response.results holds the documents
+    });
+
   return {
-    props: home,
+    props: { home, stories },
   };
 }
 

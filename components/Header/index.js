@@ -15,11 +15,6 @@ const Header = ({ pink }) => {
             alt="Big Kitty Logo"
           />
         </Link>
-        <div>
-          <Link href="/stories">
-            <span className={styles.NavLink}>Stories</span>
-          </Link>
-        </div>
       </div>
     </header>
   );
