@@ -33,6 +33,9 @@ const Story = (props) => {
                 src={props.data.main_photo.url}
                 alt="Alt"
               />
+              <BodyExtraSmall className={styles.PhotoAlt}>
+                {props.data.main_photo.alt}
+              </BodyExtraSmall>
             </div>
             <div>
               {props.data.story.map((s) => {
