@@ -6,14 +6,6 @@ import styles from "./index.module.scss";
 const StoriesList = ({ stories }) => {
   return (
     <div className={styles.Page}>
-      <div className={styles.Banner}>
-        <div className={styles.Heading}>
-          <H1 className={styles.Header}>
-            Purr-ruse stories covering Calgary's Underground Arts, Music, &
-            Culture.
-          </H1>
-        </div>
-      </div>
       {stories.results.map((story) => {
         return (
           <Link href={`/stories/${story.uid}`}>

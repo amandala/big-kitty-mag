@@ -81,8 +81,36 @@
 
 .Ad {
   width: 100%;
-
   display: flex;
+}
+
+.Heading {
+  text-align: center;
+}
+
+.Banner {
+  border-bottom: 6px solid $hollywood-cerise;
+  padding: 24px 24px;
+  background-color: black;
+}
+
+.Tags {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.Tag {
+  padding: 10px 15px 6px;
+  color: white;
+  font-family: $big-john;
+  margin: 0;
+  border: 0;
+  outline-color: white;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 @include breakpoint(medium) {
@@ -106,5 +134,30 @@
     margin: 0 auto;
     max-width: 700px;
     padding: 10px 0;
+  }
+
+  .Heading {
+    text-align: left;
+  }
+}
+
+.TagWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@include breakpoint(large) {
+  .Tags {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@include breakpoint(xlarge) {
+  .Banner {
+    border-top: 6px solid $hollywood-cerise;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 48px;
   }
 }

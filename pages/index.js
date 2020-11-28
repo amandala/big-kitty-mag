@@ -10,7 +10,9 @@ import styles from "./index.module.scss";
 
 import { Client } from "../prismic-configuration.js";
 
-const Home = ({ home, stories, ads }) => {
+const Home = ({ home, stories, ads, tags }) => {
+  const [activeFilter, setActiveFilter] = React.useState();
+  console.log({ tags });
   return (
     <div className={styles.Main}>
       <Head title="Home" />
@@ -56,6 +58,30 @@ const Home = ({ home, stories, ads }) => {
           </div>
         </Link>
       </div>
+      <div className={styles.Banner}>
+        <div className={styles.Heading}>
+          <H1 className={styles.Header}>
+            Purr-ruse stories covering Calgary's Underground Arts, Music, &
+            Culture.
+          </H1>
+        </div>
+        <div className={styles.TagWrapper}>
+          <div className={styles.Tags}>
+            {tags.results.map((tag) => {
+              return (
+                <button
+                  className={styles.Tag}
+                  style={{
+                    backgroundColor: tag.data.color,
+                  }}
+                >
+                  {tag.data.title}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
       <StoriesList stories={stories} />
       {ads.results.map((ad) => {
         return (
@@ -73,6 +99,13 @@ export async function getStaticProps(ctx) {
   const home = await Client(req).getSingle("home-page", {
     fetchLinks: ["article.title", "article.preview"],
   });
+
+  const tags = await Client(req)
+    .query(Prismic.Predicates.at("document.type", "tag"), {})
+    .then(function (response) {
+      return response;
+      // response is the response object, response.results holds the documents
+    });
 
   const ads = await Client(req)
     .query(Prismic.Predicates.at("document.type", "advertisement"), {
@@ -93,7 +126,7 @@ export async function getStaticProps(ctx) {
     });
 
   return {
-    props: { home, stories, ads },
+    props: { home, stories, ads, tags },
   };
 }
 
