@@ -3,7 +3,8 @@ import Link from "next/link";
 import Header from "../Header";
 import styles from "./index.module.scss";
 
-const StoriesList = ({ stories }) => {
+const StoriesList = ({ stories, activeFilter }) => {
+  console.log({ activeFilter });
   return (
     <div className={styles.Page}>
       {stories.results.map((story) => {
@@ -14,6 +15,21 @@ const StoriesList = ({ stories }) => {
                 <div className={styles.Preview}>
                   <H2>{story.data.title}</H2>
                   <BodySmall> {story.data.preview[0].text}</BodySmall>
+                  <div>
+                    {story.data.tags.map((tag) => {
+                      console.log(tag.tag);
+                      if (tag.tag.type === "tag") {
+                        return (
+                          <span
+                            className={styles.Tag}
+                            style={{ backgroundColor: tag?.tag?.data?.color }}
+                          >
+                            {tag?.tag?.data?.title}
+                          </span>
+                        );
+                      }
+                    })}
+                  </div>
                 </div>
                 <Meta className={styles.ReadMore}> Keep Reading</Meta>
               </div>

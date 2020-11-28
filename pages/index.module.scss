@@ -97,8 +97,9 @@
 
 .Tags {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
+  width: 100%;
 }
 
 .Tag {
@@ -136,30 +137,37 @@
     max-width: 700px;
     padding: 10px 0;
   }
+
+  .Tags {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+  }
 }
 
 .TagWrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 @include breakpoint(large) {
   .Tags {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
   }
 }
 
-@include breakpoint(xlarge) {
+@include breakpoint(xxlarge) {
   .Banner {
     border-top: 6px solid $hollywood-cerise;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 48px;
+    padding: 40px 24px;
   }
 
   .Heading {
     text-align: left;
     margin-bottom: 0;
+    margin-right: 24px;
   }
 }

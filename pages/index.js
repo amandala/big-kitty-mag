@@ -13,6 +13,7 @@ import { Client } from "../prismic-configuration.js";
 const Home = ({ home, stories, ads, tags }) => {
   const [activeFilter, setActiveFilter] = React.useState();
   console.log({ tags });
+
   return (
     <div className={styles.Main}>
       <Head title="Home" />
@@ -67,9 +68,19 @@ const Home = ({ home, stories, ads, tags }) => {
         </div>
         <div className={styles.TagWrapper}>
           <div className={styles.Tags}>
+            <button
+              onClick={() => setActiveFilter(undefined)}
+              className={styles.Tag}
+              style={{
+                backgroundColor: "#d60080",
+              }}
+            >
+              All
+            </button>
             {tags.results.map((tag) => {
               return (
                 <button
+                  onClick={() => setActiveFilter(tag.data.title)}
                   className={styles.Tag}
                   style={{
                     backgroundColor: tag.data.color,
@@ -82,7 +93,7 @@ const Home = ({ home, stories, ads, tags }) => {
           </div>
         </div>
       </div>
-      <StoriesList stories={stories} />
+      <StoriesList stories={stories} activeFilter={activeFilter} />
       {ads.results.map((ad) => {
         return (
           <div className={styles.AdWrapper}>
@@ -94,7 +105,7 @@ const Home = ({ home, stories, ads, tags }) => {
   );
 };
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
   const req = ctx.req;
   const home = await Client(req).getSingle("home-page", {
     fetchLinks: ["article.title", "article.preview"],
@@ -119,6 +130,7 @@ export async function getStaticProps(ctx) {
   const stories = await Client(req)
     .query(Prismic.Predicates.at("document.type", "article"), {
       orderings: "[my.article.released desc]",
+      fetchLinks: ["tag.title", "tag.color"],
     })
     .then(function (response) {
       return response;
