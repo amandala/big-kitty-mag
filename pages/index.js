@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Prismic from "prismic-javascript";
 import cx from "classnames";
+import Prismic from "prismic-javascript";
 import Head from "../components/head";
 import Header from "../components/Header";
 import Nav from "../components/nav";
@@ -70,7 +70,9 @@ const Home = ({ home, stories, ads, tags }) => {
           <div className={styles.Tags}>
             <button
               onClick={() => setActiveFilter(undefined)}
-              className={styles.Tag}
+              className={cx(styles.Tag, {
+                [styles.TagActive]: !activeFilter,
+              })}
               style={{
                 backgroundColor: "#d60080",
               }}
@@ -81,7 +83,9 @@ const Home = ({ home, stories, ads, tags }) => {
               return (
                 <button
                   onClick={() => setActiveFilter(tag.data.title)}
-                  className={styles.Tag}
+                  className={cx(styles.Tag, {
+                    [styles.TagActive]: activeFilter === tag.data.title,
+                  })}
                   style={{
                     backgroundColor: tag.data.color,
                   }}

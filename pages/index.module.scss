@@ -97,8 +97,8 @@
 
 .Tags {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
   width: 100%;
 }
 
@@ -108,10 +108,21 @@
   font-family: $big-john;
   margin: 0;
   border: 0;
-  outline-color: white;
+  outline: 0;
+  transition: 0.3s ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 0.7;
+  }
+
+  &Active,
+  &:focus {
+    box-shadow: 0 0 0 3px white;
+  }
+
+  &Active:focus {
+    opacity: 1;
   }
 }
 
@@ -140,8 +151,7 @@
 
   .Tags {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-template-columns: repeat(8, 1fr);
     width: 100%;
   }
 }
@@ -151,10 +161,7 @@
   align-items: center;
 }
 
-@include breakpoint(large) {
-  .Tags {
-    grid-template-columns: repeat(7, 1fr);
-  }
+@include breakpoint(xlarge) {
 }
 
 @include breakpoint(xxlarge) {
