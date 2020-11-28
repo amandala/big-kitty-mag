@@ -10,7 +10,8 @@ import styles from "./index.module.scss";
 
 import { Client } from "../prismic-configuration.js";
 
-const Home = ({ home, stories }) => {
+const Home = ({ home, stories, ads }) => {
+  console.log({ ads });
   return (
     <div className={styles.Main}>
       <Head title="Home" />
@@ -57,6 +58,13 @@ const Home = ({ home, stories }) => {
         </Link>
       </div>
       <StoriesList stories={stories} />
+      {ads.results.map((ad) => {
+        return (
+          <div className={styles.AdWrapper}>
+            <img className={styles.Ad} src={ad.data.ad.url} />
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -66,6 +74,15 @@ export async function getStaticProps(ctx) {
   const home = await Client(req).getSingle("home-page", {
     fetchLinks: ["article.title", "article.preview"],
   });
+
+  const ads = await Client(req)
+    .query(Prismic.Predicates.at("document.type", "advertisement"), {
+      fetchLinks: ["advertisement.ad"],
+    })
+    .then(function (response) {
+      return response;
+      // response is the response object, response.results holds the documents
+    });
 
   const stories = await Client(req)
     .query(Prismic.Predicates.at("document.type", "article"), {
@@ -77,7 +94,7 @@ export async function getStaticProps(ctx) {
     });
 
   return {
-    props: { home, stories },
+    props: { home, stories, ads },
   };
 }
 
