@@ -46,13 +46,12 @@
 }
 
 .Tags {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  display: flex;
 }
 
 .Tag {
   padding: 10px 15px 6px;
+  margin-right: 10px;
   color: white;
   font-family: $big-john;
 }

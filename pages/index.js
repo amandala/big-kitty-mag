@@ -12,7 +12,7 @@ import { Client } from "../prismic-configuration.js";
 
 const Home = ({ home, stories, ads, tags }) => {
   const [activeFilter, setActiveFilter] = React.useState();
-  console.log({ tags });
+  console.log({ home });
 
   return (
     <div className={styles.Main}>
@@ -21,7 +21,7 @@ const Home = ({ home, stories, ads, tags }) => {
       <div
         className={styles.FeatureStory}
         style={{
-          backgroundImage: `url(${home.data["feature-story-image"].url})`,
+          backgroundImage: `url(${home.data.feature_story.data.main_photo.url})`,
         }}
       >
         <Link href={`/stories/${home.data.feature_story.uid}`}>
@@ -32,7 +32,7 @@ const Home = ({ home, stories, ads, tags }) => {
                 {home.data.feature_story.data.title}
               </H1>
               <Body className={styles.Preview}>
-                {home.data.feature_story.data.preview[0].text}
+                {home.data.feature_story.data.deck}
               </Body>
             </div>
           </div>
@@ -43,8 +43,8 @@ const Home = ({ home, stories, ads, tags }) => {
           <div className={styles.HoverWrapper}>
             <img
               className={styles.FeatureStoryMobileImage}
-              src={home.data["feature-story-image"].url}
-              alt={home.data["image-description"]}
+              src={home.data.feature_story.data.main_photo.url}
+              alt={home.data.feature_story.data.main_photo.alt}
             />
 
             <div className={styles.FeatureStoryMobileDetails}>
@@ -53,7 +53,7 @@ const Home = ({ home, stories, ads, tags }) => {
                 {home.data.feature_story.data.title}
               </H1>
               <Body className={styles.Preview}>
-                {home.data.feature_story.data.preview[0].text}
+                {home.data.feature_story.data.deck}
               </Body>
             </div>
           </div>
@@ -108,7 +108,7 @@ const Home = ({ home, stories, ads, tags }) => {
 export async function getServerSideProps(ctx) {
   const req = ctx.req;
   const home = await Client(req).getSingle("home-page", {
-    fetchLinks: ["article.title", "article.preview"],
+    fetchLinks: ["article.title", "article.deck", "article.main_photo"],
   });
 
   const tags = await Client(req)

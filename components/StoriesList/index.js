@@ -8,16 +8,16 @@ const StoriesList = ({ stories, activeFilter }) => {
   return (
     <div className={styles.Page}>
       {stories.results.map((story) => {
+        console.log({ story });
         return (
           <Link href={`/stories/${story.uid}`}>
             <main className={styles.StoryWrapper}>
               <div className={styles.StoryDetails}>
                 <div className={styles.Preview}>
                   <H2>{story.data.title}</H2>
-                  <BodySmall> {story.data.preview[0].text}</BodySmall>
-                  <div>
+                  <BodySmall> {story.data.deck}</BodySmall>
+                  <div className={styles.Tags}>
                     {story.data.tags.map((tag) => {
-                      console.log(tag.tag);
                       if (tag.tag.type === "tag") {
                         return (
                           <span
