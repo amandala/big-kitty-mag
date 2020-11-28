@@ -86,6 +86,7 @@
 
 .Heading {
   text-align: center;
+  margin-bottom: 24px;
 }
 
 .Banner {
@@ -135,10 +136,6 @@
     max-width: 700px;
     padding: 10px 0;
   }
-
-  .Heading {
-    text-align: left;
-  }
 }
 
 .TagWrapper {
@@ -159,5 +156,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 48px;
+  }
+
+  .Heading {
+    text-align: left;
+    margin-bottom: 0;
   }
 }
