@@ -11,7 +11,6 @@ import styles from "./index.module.scss";
 import { Client } from "../prismic-configuration.js";
 
 const Home = ({ home, stories, ads }) => {
-  console.log({ ads });
   return (
     <div className={styles.Main}>
       <Head title="Home" />

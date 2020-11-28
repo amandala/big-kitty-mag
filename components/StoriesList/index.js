@@ -21,9 +21,7 @@ const StoriesList = ({ stories }) => {
               <div className={styles.StoryDetails}>
                 <div className={styles.Preview}>
                   <H2>{story.data.title}</H2>
-                  {story.data.story.slice(0, 1).map((chunk) => {
-                    return <BodySmall>{chunk.text}</BodySmall>;
-                  })}
+                  <BodySmall> {story.data.preview[0].text}</BodySmall>
                 </div>
                 <Meta className={styles.ReadMore}> Keep Reading</Meta>
               </div>
