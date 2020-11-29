@@ -10,6 +10,7 @@ import {
   Body,
   BodyExtraSmall,
 } from "../../../components/Typography";
+import Photo from "../../../components/Photo";
 import { Client } from "../../../prismic-configuration.js";
 
 const Story = (props) => {
@@ -27,19 +28,10 @@ const Story = (props) => {
             <Meta>{props.data.released}</Meta>
           </div>
           <div>
-            <div className={styles.MainPhotoWrapper}>
-              <img
-                className={styles.Photo}
-                src={props.data.main_photo.url}
-                alt={props.data.main_photo.alt}
-              />
-              <BodyExtraSmall className={styles.PhotoAlt}>
-                {props.data.main_photo.alt}
-              </BodyExtraSmall>
-            </div>
+            <Photo photo={props.data.main_photo} />
+
             <div>
               {props.data.story.map((s) => {
-                console.log(s);
                 if (s.type === "heading3") {
                   return <H3 className={styles.Heading}>{s.text}</H3>;
                 }
@@ -47,18 +39,7 @@ const Story = (props) => {
                   return <H2 className={styles.Heading}>{s.text}</H2>;
                 }
                 if (s.type === "image") {
-                  return (
-                    <div>
-                      <img
-                        className={styles.PhotoContent}
-                        src={s.url}
-                        alt={s.alt}
-                      />
-                      <BodyExtraSmall className={styles.PhotoAlt}>
-                        {s.alt}
-                      </BodyExtraSmall>
-                    </div>
-                  );
+                  return <Photo photo={s} />;
                 }
                 return <Body>{s.text}</Body>;
               })}

@@ -1,0 +1,22 @@
+.Photo {
+  width: 100%;
+}
+
+.PhotoContent {
+  width: 100%;
+  :first-of-type {
+    margin: 32px 0 0;
+  }
+}
+.PhotoAlt {
+  margin-bottom: 32px;
+  margin-top: 8px;
+  text-align: center;
+  color: grey;
+}
+
+.Creds {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
