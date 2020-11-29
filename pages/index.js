@@ -12,7 +12,6 @@ import { Client } from "../prismic-configuration.js";
 
 const Home = ({ home, stories, ads, tags }) => {
   const [activeFilter, setActiveFilter] = React.useState();
-  console.log({ home });
 
   return (
     <div className={styles.Main}>

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import styles from "./index.module.scss";
 import Header from "../../../components/Header";
+import Head from "../../../components/Head";
 import {
   H1,
   Meta,
@@ -20,6 +21,7 @@ const Story = (props) => {
   if (props.data) {
     return (
       <div className={styles.Page}>
+        <Head title={props.data.title} />
         <Header pink={true} />
         <main className={styles.Wrapper}>
           <div className={styles.Header}>
