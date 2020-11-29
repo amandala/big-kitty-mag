@@ -12,3 +12,24 @@ body {
   font-family: "SlimJoe";
   src: url("/fonts/SlimJoe.woff2") format("woff2");
 }
+
+#mc_embed_signup .button {
+  background-color: #d60080;
+  outline: 0;
+  font-family: "BigJohn";
+  padding: 2px 18px 0;
+}
+
+#mc_embed_signup .button:hover {
+  background-color: #d60080;
+  opacity: 0.7;
+}
+
+#mc_embed_signup .button:focus {
+  box-shadow: 0 0 0 3px white;
+}
+
+#mc_embed_signup form {
+  text-align: unset;
+  padding-bottom: 2px;
+}

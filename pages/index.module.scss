@@ -76,7 +76,7 @@
 
 .AdWrapper {
   background-color: white;
-  width: 100%;
+  padding: 24px;
 }
 
 .Ad {
@@ -126,6 +126,11 @@
   }
 }
 
+.TagWrapper {
+  display: flex;
+  align-items: center;
+}
+
 @include breakpoint(medium) {
   .FeatureStory {
     display: flex;
@@ -149,19 +154,15 @@
     padding: 10px 0;
   }
 
+  .AdWrapper {
+    padding: 0;
+  }
+
   .Tags {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     width: 100%;
   }
-}
-
-.TagWrapper {
-  display: flex;
-  align-items: center;
-}
-
-@include breakpoint(xlarge) {
 }
 
 @include breakpoint(xxlarge) {

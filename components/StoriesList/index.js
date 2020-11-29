@@ -8,7 +8,6 @@ const StoriesList = ({ stories, activeFilter }) => {
     <div className={styles.Page}>
       {stories.results
         .filter((story) => {
-          console.log({ story });
           if (activeFilter) {
             return story.data.tags.find((tag) => {
               if (tag.tag.data.title && tag.tag.data.title === activeFilter)

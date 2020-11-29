@@ -17,6 +17,11 @@ const Head = (props) => (
     />
     <meta name="keywords" content={props.keywords || defaultKeywords} />
     <link
+      href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css"
+      rel="stylesheet"
+      type="text/css"
+    ></link>
+    <link
       rel="icon"
       type="image/png"
       sizes="16x16"

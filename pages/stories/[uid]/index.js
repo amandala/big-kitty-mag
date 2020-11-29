@@ -22,7 +22,7 @@ const Story = (props) => {
         <Header pink={true} />
         <main className={styles.Wrapper}>
           <div className={styles.Header}>
-            {/* <H1>{props.data.title}</H1> */}
+            <H1>{props.data.title}</H1>
             <H5>{props.data.author.data.name}</H5>
             <Meta>{props.data.released}</Meta>
           </div>
@@ -31,7 +31,7 @@ const Story = (props) => {
               <img
                 className={styles.Photo}
                 src={props.data.main_photo.url}
-                alt="Alt"
+                alt={props.data.main_photo.alt}
               />
               <BodyExtraSmall className={styles.PhotoAlt}>
                 {props.data.main_photo.alt}
@@ -41,15 +41,14 @@ const Story = (props) => {
               {props.data.story.map((s) => {
                 console.log(s);
                 if (s.type === "heading3") {
-                  //eturn <H3 className={styles.Heading}>{s.text}</H3>;
+                  return <H3 className={styles.Heading}>{s.text}</H3>;
                 }
                 if (s.type === "heading2") {
-                  //return <H2 className={styles.Heading}>{s.text}</H2>;
+                  return <H2 className={styles.Heading}>{s.text}</H2>;
                 }
                 if (s.type === "image") {
                   return (
                     <div>
-                      {console.log(s)}
                       <img
                         className={styles.PhotoContent}
                         src={s.url}
