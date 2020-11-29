@@ -50,10 +50,11 @@
 }
 
 .Tag {
-  padding: 10px 15px 6px;
+  padding: 5px 10px 2px;
   margin-right: 10px;
   color: white;
   font-family: $big-john;
+  font-size: 12px;
 }
 
 @include breakpoint(large) {
