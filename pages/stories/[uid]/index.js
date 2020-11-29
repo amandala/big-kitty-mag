@@ -14,6 +14,32 @@ import {
 import Photo from "../../../components/Photo";
 import { Client } from "../../../prismic-configuration.js";
 
+const applyLinks = (elem) => {
+  if (elem.spans && elem.spans.length > 0) {
+    console.log(elem.spans);
+    const newText = elem.text;
+    elem.spans.forEach((span) => {
+      if (span.type === "hyperlink") {
+        console.log(newText.split(""));
+        newText
+          .split("")
+          .splice(
+            span.start,
+            0,
+            `<a href=${span.data.url} target=${span.data.target}>`
+          );
+        newText.split().splice(span.end, 0, `</a>`);
+      }
+    });
+
+    console.log(newText);
+
+    return elem.text;
+  } else {
+    return elem.text;
+  }
+};
+
 const Story = (props) => {
   const router = useRouter();
   const { uid } = router.query;
@@ -40,10 +66,13 @@ const Story = (props) => {
                 if (s.type === "heading2") {
                   return <H2 className={styles.Heading}>{s.text}</H2>;
                 }
+                if (s.type === "heading1") {
+                  return <Body className={styles.PullQuote}>{s.text}</Body>;
+                }
                 if (s.type === "image") {
                   return <Photo photo={s} />;
                 }
-                return <Body>{s.text}</Body>;
+                return <Body>{applyLinks(s)}</Body>;
               })}
             </div>
           </div>

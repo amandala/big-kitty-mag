@@ -18,6 +18,14 @@
   margin: 32px 0 32px;
 }
 
+.PullQuote {
+  opacity: 0.6;
+  font-size: 32px;
+  margin: 32px 32px;
+  border-left: 1px solid black;
+  padding-left: 15px;
+}
+
 @include breakpoint(large) {
   .Page {
     min-height: unset;

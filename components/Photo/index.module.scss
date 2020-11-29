@@ -2,6 +2,7 @@
 
 .Photo {
   width: 100%;
+  margin: 32px 0;
 }
 
 .PhotoContent {
@@ -11,7 +12,6 @@
   }
 }
 .PhotoAlt {
-  margin-bottom: 32px;
   margin-top: 8px;
   text-align: center;
   color: grey;
@@ -32,9 +32,5 @@
   .Creds {
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .PhotoAlt {
-    margin-bottom: 32px;
   }
 }
