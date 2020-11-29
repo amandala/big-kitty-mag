@@ -10,6 +10,7 @@ import {
   H2,
   Body,
   BodyExtraSmall,
+  BodySmall,
 } from "../../../components/Typography";
 import Photo from "../../../components/Photo";
 import { Client } from "../../../prismic-configuration.js";
@@ -31,7 +32,6 @@ const Story = (props) => {
           </div>
           <div>
             <Photo photo={props.data.main_photo} />
-
             <div>
               {props.data.story.map((s) => {
                 if (s.type === "heading3") {
@@ -50,6 +50,22 @@ const Story = (props) => {
               })}
             </div>
           </div>
+          {props.data.links.length ? (
+            <div className={[styles.Resources]}>
+              <H1 className={styles.LinksHeading}>Links and Resources</H1>
+              {props.data.links.map((link) => {
+                return (
+                  <a
+                    className={styles.Anchor}
+                    href={link.link.url}
+                    target={link.link.target}
+                  >
+                    <Body className={styles.Link}>{link.display_text}</Body>
+                  </a>
+                );
+              })}
+            </div>
+          ) : null}
         </main>
       </div>
     );

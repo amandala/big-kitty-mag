@@ -133,7 +133,7 @@ export async function getServerSideProps(ctx) {
   const stories = await Client(req)
     .query(Prismic.Predicates.at("document.type", "article"), {
       orderings: "[my.article.released desc]",
-      fetchLinks: ["tag.title", "tag.color"],
+      fetchLinks: ["tag.title", "tag.color", "link.display_text", "link.link"],
     })
     .then(function (response) {
       return response;
