@@ -16,6 +16,7 @@
     "classnames": "^2.2.6",
     "next": "^9.5.3",
     "prismic-javascript": "^3.0.2",
+    "prismic-reactjs-custom": "^1.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sass": "^1.26.10"

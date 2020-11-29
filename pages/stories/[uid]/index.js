@@ -1,4 +1,6 @@
 import { useRouter } from "next/router";
+import { RichTextRenderer } from "prismic-reactjs-custom";
+
 import styles from "./index.module.scss";
 import Header from "../../../components/Header";
 import Head from "../../../components/Head";
@@ -36,6 +38,27 @@ const applyLinks = (elem) => {
   }
 };
 
+const PrH1 = (s) => {
+  console.log(s);
+  return <Body className={styles.PullQuote}>{s.children[0]}</Body>;
+};
+const PrH2 = (s) => <H2 className={styles.Heading}>{s.text}</H2>;
+const PrH3 = (s) => <H3 className={styles.Heading}>{s.text}</H3>;
+const PhPhoto = (s) => {
+  console.log(s);
+  return <Photo photo={s} />;
+};
+const PrP = (s) => <Body>{s.text}</Body>;
+
+export const RichText = ({ text }) =>
+  RichTextRenderer.render(text, {
+    heading1: PrH1, // your own component
+    heading2: PrH2,
+    heading3: PrH3,
+    paragraph: PrP,
+    image: PhPhoto,
+  });
+
 const Story = (props) => {
   const router = useRouter();
   const { uid } = router.query;
@@ -53,8 +76,9 @@ const Story = (props) => {
           </div>
           <div>
             <Photo photo={props.data.main_photo} />
+            <RichText text={props.data.story} />
 
-            <div>
+            {/* <div>
               {props.data.story.map((s) => {
                 if (s.type === "heading3") {
                   return <H3 className={styles.Heading}>{s.text}</H3>;
@@ -70,7 +94,7 @@ const Story = (props) => {
                 }
                 return <Body>{applyLinks(s)}</Body>;
               })}
-            </div>
+            </div> */}
           </div>
         </main>
       </div>
