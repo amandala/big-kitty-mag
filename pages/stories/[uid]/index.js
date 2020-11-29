@@ -14,28 +14,6 @@ import {
 import Photo from "../../../components/Photo";
 import { Client } from "../../../prismic-configuration.js";
 
-const applyLinks = (elem) => {
-  if (elem.spans && elem.spans.length > 0) {
-    const newText = elem.text;
-    elem.spans.forEach((span) => {
-      if (span.type === "hyperlink") {
-        newText
-          .split("")
-          .splice(
-            span.start,
-            0,
-            `<a href=${span.data.url} target=${span.data.target}>`
-          );
-        newText.split().splice(span.end, 0, `</a>`);
-      }
-    });
-
-    return elem.text;
-  } else {
-    return elem.text;
-  }
-};
-
 const Story = (props) => {
   const router = useRouter();
   const { uid } = router.query;
@@ -68,7 +46,7 @@ const Story = (props) => {
                 if (s.type === "image") {
                   return <Photo photo={s} />;
                 }
-                return <Body>{applyLinks(s)}</Body>;
+                return <Body>{s.text}</Body>;
               })}
             </div>
           </div>
