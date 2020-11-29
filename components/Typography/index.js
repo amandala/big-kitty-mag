@@ -1,50 +1,44 @@
 import React from "react";
-import classNames from "classnames";
+import cx from "classnames";
 
 import styles from "./index.module.scss";
 
-const classes = ({ className, style }) => classNames(style, className);
-
 export const H1 = ({ children, className }) => (
-  <h1 className={classes({ className, style: styles.H1 })}>{children}</h1>
+  <h1 className={cx(styles.H1, className)}>{children}</h1>
 );
 
 export const H2 = ({ children, className }) => (
-  <h2 className={classes({ className, style: styles.H2 })}>{children}</h2>
+  <h2 className={cx(styles.H2, className)}>{children}</h2>
 );
 
 export const H3 = ({ children, className }) => (
-  <h3 className={classes({ className, style: styles.H3 })}>{children}</h3>
+  <h3 className={cx(styles.H3, className)}>{children}</h3>
 );
 
 export const H4 = ({ children, className }) => (
-  <h4 className={classes({ className, style: styles.H4 })}>{children}</h4>
+  <h4 className={cx(styles.H4, className)}>{children}</h4>
 );
 
 export const H5 = ({ children, className }) => (
-  <h5 className={classes({ className, style: styles.H5 })}>{children}</h5>
+  <h5 className={cx(styles.H5, className)}>{children}</h5>
 );
 
 export const H6 = ({ children, className }) => (
-  <h6 className={classes({ className, style: styles.H6 })}>{children}</h6>
+  <h6 className={cx(styles.H6, className)}>{children}</h6>
 );
 
 export const Body = ({ children, className }) => (
-  <p className={classes({ className, style: styles.Body })}>{children}</p>
+  <p className={cx(styles.Body, className)}>{children}</p>
 );
 
 export const BodySmall = ({ children, className }) => (
-  <p className={classes({ className, style: styles.BodySmall })}>{children}</p>
+  <p className={cx(styles.BodySmall, className)}>{children}</p>
 );
 
 export const BodyExtraSmall = ({ children, className }) => (
-  <p className={classes({ className, style: styles.BodyExtraSmall })}>
-    {children}
-  </p>
+  <p className={cx(styles.BodyExtraSmall, className)}>{children}</p>
 );
 
 export const Meta = ({ children, className }) => (
-  <strong className={classes({ className, style: styles.Meta })}>
-    {children}
-  </strong>
+  <strong className={cx(styles.Meta, className)}>{children}</strong>
 );
