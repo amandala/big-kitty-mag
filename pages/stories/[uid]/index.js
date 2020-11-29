@@ -16,11 +16,9 @@ import { Client } from "../../../prismic-configuration.js";
 
 const applyLinks = (elem) => {
   if (elem.spans && elem.spans.length > 0) {
-    console.log(elem.spans);
     const newText = elem.text;
     elem.spans.forEach((span) => {
       if (span.type === "hyperlink") {
-        console.log(newText.split(""));
         newText
           .split("")
           .splice(
@@ -31,8 +29,6 @@ const applyLinks = (elem) => {
         newText.split().splice(span.end, 0, `</a>`);
       }
     });
-
-    console.log(newText);
 
     return elem.text;
   } else {

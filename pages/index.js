@@ -1,7 +1,7 @@
 import Link from "next/link";
 import cx from "classnames";
 import Prismic from "prismic-javascript";
-import Head from "../components/head";
+import Head from "../components/Head";
 import Header from "../components/Header";
 import Nav from "../components/nav";
 import { H1, Body } from "../components/Typography";
