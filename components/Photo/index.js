@@ -1,5 +1,5 @@
 import React from "react";
-import cx from "classNames";
+import cx from "classnames";
 import { BodyExtraSmall } from "../Typography";
 import styles from "./index.module.scss";
 
