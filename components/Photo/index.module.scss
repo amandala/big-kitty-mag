@@ -26,7 +26,6 @@
 .Creds {
   display: flex;
   flex-direction: column;
-
   align-items: baseline;
 }
 
@@ -38,5 +37,9 @@
 
   .PhotoPortrait {
     width: 50%;
+  }
+
+  .PhotoAlt {
+    text-align: left;
   }
 }
