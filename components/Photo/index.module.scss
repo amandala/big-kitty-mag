@@ -2,13 +2,15 @@
 
 .Photo {
   width: 100%;
-  margin: 32px 0;
+  margin: 32px auto;
 }
 
 .PhotoContent {
+  width: auto;
   width: 100%;
+  margin: 0 auto;
   :first-of-type {
-    margin: 32px 0 0;
+    margin: 32px auto 0;
   }
 }
 .PhotoAlt {
@@ -32,5 +34,9 @@
   .Creds {
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .PhotoPortrait {
+    width: 50%;
   }
 }

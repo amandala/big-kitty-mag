@@ -50,7 +50,7 @@ const Story = (props) => {
               })}
             </div>
           </div>
-          {props.data.links.length ? (
+          {props.data.links.length > 0 ? (
             <div className={[styles.Resources]}>
               <H1 className={styles.LinksHeading}>Links and Resources</H1>
               {props.data.links.map((link) => {

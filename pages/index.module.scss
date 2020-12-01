@@ -91,7 +91,7 @@
 
 .Banner {
   border-bottom: 6px solid $hollywood-cerise;
-  padding: 24px 24px;
+  padding: 24px 20px;
   background-color: black;
 }
 
@@ -162,6 +162,12 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     width: 100%;
+  }
+}
+
+@include breakpoint(large) {
+  .Banner {
+    padding: 40px;
   }
 }
 

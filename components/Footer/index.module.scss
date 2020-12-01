@@ -20,11 +20,11 @@
   text-decoration: none;
   color: white;
   outline: 0;
+  font-family: $kumbh-sans;
+  font-size: 12px;
   &:hover,
   &:focus {
-    .Cta {
-      color: $hollywood-cerise;
-    }
+    color: $hollywood-cerise;
   }
   margin-top: 24px;
 }
