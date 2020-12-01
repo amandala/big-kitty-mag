@@ -47,6 +47,7 @@
 
 .Tags {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .Tag {
@@ -66,6 +67,15 @@
 .Ad {
   width: 100%;
   display: flex;
+}
+
+.Title {
+  margin-bottom: 5px;
+}
+
+.Author {
+  margin-bottom: 10px;
+  display: block;
 }
 
 @include breakpoint(large) {
