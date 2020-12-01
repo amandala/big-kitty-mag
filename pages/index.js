@@ -4,7 +4,7 @@ import Prismic from "prismic-javascript";
 import Head from "../components/Head";
 import Header from "../components/Header";
 import Nav from "../components/nav";
-import { H1, Body } from "../components/Typography";
+import { H1, Body, Meta } from "../components/Typography";
 import StoriesList from "../components/StoriesList";
 import styles from "./index.module.scss";
 
@@ -12,7 +12,6 @@ import { Client } from "../prismic-configuration.js";
 
 const Home = ({ home, stories, ads, tags }) => {
   const [activeFilter, setActiveFilter] = React.useState();
-
   return (
     <div className={styles.Main}>
       <Head title="Home" />
@@ -33,6 +32,7 @@ const Home = ({ home, stories, ads, tags }) => {
               <Body className={styles.Preview}>
                 {home.data.feature_story.data.deck}
               </Body>
+              {/* <Meta> {home.data.feature_story.data.author.name}</Meta> */}
             </div>
           </div>
         </Link>
@@ -130,7 +130,13 @@ export async function getServerSideProps(ctx) {
   const stories = await Client(req)
     .query(Prismic.Predicates.at("document.type", "article"), {
       orderings: "[my.article.released desc]",
-      fetchLinks: ["tag.title", "tag.color", "link.display_text", "link.link"],
+      fetchLinks: [
+        "tag.title",
+        "tag.color",
+        "link.display_text",
+        "link.link",
+        "author.name",
+      ],
     })
     .then(function (response) {
       return response;

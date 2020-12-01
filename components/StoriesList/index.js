@@ -26,7 +26,10 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
                 <section className={styles.StoryWrapper}>
                   <div className={styles.StoryDetails}>
                     <div className={styles.Preview}>
-                      <H2>{story.data.title}</H2>
+                      <H2 className={styles.Title}>{story.data.title}</H2>
+                      <Meta className={styles.Author}>
+                        By {story.data.author.data.name}
+                      </Meta>
                       <BodySmall> {story.data.deck}</BodySmall>
                       <div className={styles.Tags}>
                         {story.data.tags.map((tag) => {
