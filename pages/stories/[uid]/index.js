@@ -31,7 +31,11 @@ const Story = (props) => {
             <Meta>{props.data.released}</Meta>
           </div>
           <div>
-            <Photo photo={props.data.main_photo} />
+            {props.data.main_photo.url ? (
+              <Photo photo={props.data.main_photo} />
+            ) : null}
+          </div>
+          <div>
             <div>
               {props.data.story.map((s) => {
                 if (s.type === "heading3") {

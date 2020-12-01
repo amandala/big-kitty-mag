@@ -1,4 +1,5 @@
 import { H1, H2, BodySmall, Meta } from "../Typography";
+import cx from "classnames";
 import Link from "next/link";
 import Header from "../Header";
 import styles from "./index.module.scss";
@@ -22,7 +23,7 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
           return (
             <>
               <Link href={`/stories/${story.uid}`}>
-                <main className={styles.StoryWrapper}>
+                <section className={styles.StoryWrapper}>
                   <div className={styles.StoryDetails}>
                     <div className={styles.Preview}>
                       <H2>{story.data.title}</H2>
@@ -48,11 +49,16 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
                   </div>
                   <div className={styles.ImageWrapper}>
                     <img
-                      className={styles.StoryPhoto}
+                      className={cx(styles.StoryPhoto, {
+                        [styles.StoryPhotoPortrait]:
+                          story.data?.main_photo?.dimensions &&
+                          story.data.main_photo.dimensions.width <
+                            story.data.main_photo.dimensions.height,
+                      })}
                       src={story.data.main_photo.url}
                     />
                   </div>
-                </main>
+                </section>
               </Link>
               {index % 2 === 0 && ads[index - 2] ? (
                 <a href={ads[index - 2].data.link.url} target="_blank">
