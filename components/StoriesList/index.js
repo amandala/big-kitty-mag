@@ -4,20 +4,21 @@ import Header from "../Header";
 import styles from "./index.module.scss";
 
 const StoriesList = ({ stories, activeFilter, ads }) => {
+  const filteredStories = stories.results.filter((story) => {
+    if (activeFilter) {
+      return story.data.tags.find((tag) => {
+        if (tag.tag.data.title && tag.tag.data.title === activeFilter)
+          return story;
+      });
+    } else {
+      return story;
+    }
+  });
+
   return (
     <div className={styles.Page}>
-      {stories.results
-        .filter((story) => {
-          if (activeFilter) {
-            return story.data.tags.find((tag) => {
-              if (tag.tag.data.title && tag.tag.data.title === activeFilter)
-                return story;
-            });
-          } else {
-            return story;
-          }
-        })
-        .map((story, index) => {
+      {filteredStories.length > 0 ? (
+        filteredStories.map((story, index) => {
           return (
             <>
               <Link href={`/stories/${story.uid}`}>
@@ -65,7 +66,14 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
               ) : null}
             </>
           );
-        })}
+        })
+      ) : (
+        <a href={ads[0].data.link.url} target="_blank">
+          <div className={styles.AdWrapper}>
+            <img className={styles.Ad} src={ads[0].data.ad.url} />
+          </div>
+        </a>
+      )}
     </div>
   );
 };

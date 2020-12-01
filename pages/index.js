@@ -20,7 +20,7 @@ const Home = ({ home, stories, ads, tags }) => {
       <div
         className={styles.FeatureStory}
         style={{
-          backgroundImage: `url(${home.data.feature_story.data.main_photo.url})`,
+          backgroundImage: `url(${home.data.feature_story.data.main_photo?.url})`,
         }}
       >
         <Link href={`/stories/${home.data.feature_story.uid}`}>
