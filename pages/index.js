@@ -60,10 +60,9 @@ const Home = ({ home, stories, ads, tags }) => {
       </div>
       <div className={styles.Banner}>
         <div className={styles.Heading}>
-          <H1 className={styles.Header}>
-            Purr-ruse stories covering Calgary's Underground Arts, Music, &
-            Culture.
-          </H1>
+          <H1 className={styles.Header}>{`Viewing: ${
+            activeFilter ? activeFilter : "All"
+          } Stories`}</H1>
         </div>
         <div className={styles.TagWrapper}>
           <div className={styles.Tags}>
