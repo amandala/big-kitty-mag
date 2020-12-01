@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+
+.Photo {
+  width: 100%;
+  margin: 32px auto;
+}
+
+.PhotoContent {
+  width: auto;
+  width: 100%;
+  margin: 0 auto;
+  :first-of-type {
+    margin: 32px auto 0;
+  }
+}
+.PhotoAlt {
+  margin-top: 8px;
+  text-align: center;
+  color: grey;
+
+  &:first-of-type {
+    margin-bottom: 5px;
+  }
+}
+
+.Creds {
+  display: flex;
+  flex-direction: column;
+
+  align-items: baseline;
+}
+
+@include breakpoint(medium) {
+  .Creds {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .PhotoPortrait {
+    width: 50%;
+  }
+}
