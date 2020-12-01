@@ -19,7 +19,7 @@ const Photo = ({ photo }) => {
         <BodyExtraSmall className={styles.PhotoAlt}>{photo.alt}</BodyExtraSmall>
         {photo.copyright ? (
           <BodyExtraSmall className={styles.PhotoAlt}>
-            📸 {photo.copyright}
+            &#169; {photo.copyright}
           </BodyExtraSmall>
         ) : null}
       </div>
