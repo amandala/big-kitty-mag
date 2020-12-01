@@ -53,7 +53,27 @@
   font-size: 12px;
 }
 
+.AdWrapper {
+  background-color: white;
+  padding: 24px;
+}
+
+.Ad {
+  width: 100%;
+  display: flex;
+}
+
 @include breakpoint(large) {
+  .Ad {
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 10px 0;
+  }
+
+  .AdWrapper {
+    padding: 0;
+  }
+
   .Wrapper {
     padding: 32px 0;
   }

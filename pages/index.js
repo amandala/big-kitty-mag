@@ -96,14 +96,11 @@ const Home = ({ home, stories, ads, tags }) => {
           </div>
         </div>
       </div>
-      <StoriesList stories={stories} activeFilter={activeFilter} />
-      {ads.results.map((ad) => {
-        return (
-          <div className={styles.AdWrapper}>
-            <img className={styles.Ad} src={ad.data.ad.url} />
-          </div>
-        );
-      })}
+      <StoriesList
+        stories={stories}
+        activeFilter={activeFilter}
+        ads={ads.results}
+      />
     </div>
   );
 };

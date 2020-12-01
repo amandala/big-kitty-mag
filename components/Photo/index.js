@@ -4,7 +4,6 @@ import { BodyExtraSmall } from "../Typography";
 import styles from "./index.module.scss";
 
 const Photo = ({ photo }) => {
-  console.log(photo);
   return (
     <div
       className={cx(styles.Photo, {
