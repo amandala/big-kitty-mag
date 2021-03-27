@@ -8,10 +8,11 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
   const [adNumber, setAdNumber] = React.useState(0);
 
   const renderAd = () => {
+    
     return (
       <a href={ads[adNumber].data.link.url} target="_blank">
-        <div className={styles.AdWrapper}>
-          <img className={styles.Ad} src={ads[adNumber].data.ad.url} />
+        <div className={styles.AdWrapper} style={{backgroundColor: ads[adNumber].data.background_color}}>
+          <img className={styles.Ad} src={ads[adNumber].data.image.url} alt={ads[adNumber].data.image.alt} />
         </div>
       </a>
     );
@@ -103,7 +104,7 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
                 <div className={styles.AdWrapper}>
                   <img
                     className={styles.Ad}
-                    src={ads[chunkIndex].data.ad.url}
+                    src={ads[chunkIndex].data.image.url}
                   />
                 </div>
               </a>
@@ -111,69 +112,6 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
           </div>
         );
       })}
-      {/* 
-      {filteredStories.length > 0 ? (
-        filteredStories.map((story, index) => {
-          return (
-            <>
-              <Link href={`/stories/${story.uid}`}>
-                <section className={styles.StoryWrapper}>
-                  <div className={styles.StoryDetails}>
-                    <div className={styles.Preview}>
-                      <H2 className={styles.Title}>{story.data.title}</H2>
-                      <Meta className={styles.Author}>
-                        By {story.data.author.data.name}
-                      </Meta>
-                      <BodySmall> {story.data.deck}</BodySmall>
-                      <div className={styles.Tags}>
-                        {story.data.tags.map((tag) => {
-                          if (tag.tag.type === "tag") {
-                            return (
-                              <span
-                                className={styles.Tag}
-                                style={{
-                                  backgroundColor: tag?.tag?.data?.color,
-                                }}
-                              >
-                                {tag?.tag?.data?.title}
-                              </span>
-                            );
-                          }
-                        })}
-                      </div>
-                    </div>
-                    <Meta className={styles.ReadMore}> Keep Reading</Meta>
-                  </div>
-                  <div className={styles.ImageWrapper}>
-                    <img
-                      className={cx(styles.StoryPhoto, {
-                        [styles.StoryPhotoPortrait]:
-                          story.data?.main_photo?.dimensions &&
-                          story.data.main_photo.dimensions.width <
-                            story.data.main_photo.dimensions.height,
-                      })}
-                      src={story.data.main_photo.url}
-                    />
-                  </div>
-                </section>
-              </Link>
-              {ads[index] ? (
-                <a href={ads[index].data.link.url} target="_blank">
-                  <div className={styles.AdWrapper}>
-                    <img className={styles.Ad} src={ads[index].data.ad.url} />
-                  </div>
-                </a>
-              ) : null}
-            </>
-          );
-        })
-      ) : (
-        <a href={ads[0].data.link.url} target="_blank">
-          <div className={styles.AdWrapper}>
-            <img className={styles.Ad} src={ads[0].data.ad.url} />
-          </div>
-        </a>
-      )} */}
     </div>
   );
 };
