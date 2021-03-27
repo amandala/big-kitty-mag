@@ -66,17 +66,6 @@ const Home = ({ home, stories, ads, tags }) => {
         </div>
         <div className={styles.TagWrapper}>
           <div className={styles.Tags}>
-            <button
-              onClick={() => setActiveFilter(undefined)}
-              className={cx(styles.Tag, {
-                [styles.TagActive]: !activeFilter,
-              })}
-              style={{
-                backgroundColor: "#d60080",
-              }}
-            >
-              All
-            </button>
             {tags.results.map((tag) => {
               return (
                 <button
@@ -92,6 +81,16 @@ const Home = ({ home, stories, ads, tags }) => {
                 </button>
               );
             })}
+          </div>
+          <div className={styles.AllStoriesWrapper}>
+            <button
+              onClick={() => setActiveFilter(undefined)}
+              className={cx(styles.AllStories, {
+                [styles.AllStoriesActive]: !activeFilter,
+              })}
+            >
+              View All Stories
+            </button>
           </div>
         </div>
       </div>
@@ -118,8 +117,8 @@ export async function getServerSideProps(ctx) {
     });
 
   const ads = await Client(req)
-    .query(Prismic.Predicates.at("document.type", "advertisement"), {
-      fetchLinks: ["advertisement.ad"],
+    .query(Prismic.Predicates.at("document.type", "ad"), {
+      fetchLinks: ["ad.image"],
       orderings: "[document.last_publication_date desc]",
     })
     .then(function (response) {
@@ -129,6 +128,7 @@ export async function getServerSideProps(ctx) {
 
   const stories = await Client(req)
     .query(Prismic.Predicates.at("document.type", "article"), {
+      pageSize: 100,
       orderings: "[my.article.released desc]",
       fetchLinks: [
         "tag.title",
