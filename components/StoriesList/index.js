@@ -1,24 +1,10 @@
 import { H1, H2, BodySmall, Meta } from "../Typography";
 import cx from "classnames";
 import Link from "next/link";
-import Header from "../Header";
 import styles from "./index.module.scss";
 
 const StoriesList = ({ stories, activeFilter, ads }) => {
   const [adNumber, setAdNumber] = React.useState(0);
-
-  const renderAd = () => {
-    
-    return (
-      <a href={ads[adNumber].data.link.url} target="_blank">
-        <div className={styles.AdWrapper} style={{backgroundColor: ads[adNumber].data.background_color}}>
-          <img className={styles.Ad} src={ads[adNumber].data.image.url} alt={ads[adNumber].data.image.alt} />
-        </div>
-      </a>
-    );
-
-    setAdNumber(adNumber + 1);
-  };
 
   function chunkArray(myArray, chunk_size) {
     var index = 0;
@@ -104,7 +90,7 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
                 <div className={styles.AdWrapper}>
                   <img
                     className={styles.Ad}
-                    src={ads[chunkIndex].data.image.url}
+                    src={ads[chunkIndex].data.ad.url}
                   />
                 </div>
               </a>
