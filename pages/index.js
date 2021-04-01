@@ -117,8 +117,8 @@ export async function getServerSideProps(ctx) {
     });
 
   const ads = await Client(req)
-    .query(Prismic.Predicates.at("document.type", "ad"), {
-      fetchLinks: ["ad.image"],
+    .query(Prismic.Predicates.at("document.type", "advertisement"), {
+      fetchLinks: ["advertisement.ad"],
       orderings: "[document.last_publication_date desc]",
     })
     .then(function (response) {
