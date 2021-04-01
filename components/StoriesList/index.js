@@ -13,7 +13,6 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
 
     for (index = 0; index < arrayLength; index += chunk_size) {
       let myChunk = myArray.slice(index, index + chunk_size);
-      // Do something if you want with the group
       tempArray.push(myChunk);
     }
 
@@ -32,6 +31,19 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
   });
 
   const chunked = chunkArray(filteredStories, 3);
+
+  const renderAd = (ad) => {
+    if (ad && ad.data) {
+      return (
+        <a href={ad.data.link.url} target="_blank" alt={ad.alt_text}>
+          <div className={styles.AdWrapper}>
+            <img className={styles.Ad} src={ad.data.ad.url} />
+          </div>
+        </a>
+      );
+    }
+    return null;
+  };
 
   return (
     <div className={styles.Page}>
@@ -85,16 +97,8 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
                 </>
               );
             })}
-            {ads[chunkIndex] ? (
-              <a href={ads[chunkIndex].data.link.url} target="_blank">
-                <div className={styles.AdWrapper}>
-                  <img
-                    className={styles.Ad}
-                    src={ads[chunkIndex].data.ad.url}
-                  />
-                </div>
-              </a>
-            ) : null}
+
+            {renderAd(ads[chunkIndex])}
           </div>
         );
       })}
