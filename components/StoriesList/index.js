@@ -34,9 +34,13 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
 
   const renderAd = (ad) => {
     if (ad && ad.data) {
+      console.log(ad.data);
       return (
         <a href={ad.data.link.url} target="_blank" alt={ad.alt_text}>
-          <div className={styles.AdWrapper}>
+          <div
+            className={styles.AdWrapper}
+            style={{ backgroundColor: ad.data.background_color }}
+          >
             <img className={styles.Ad} src={ad.data.ad.url} />
           </div>
         </a>
