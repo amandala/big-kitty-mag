@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import Link from "next/link";
-import { H2 } from "../../components/Typography";
+import { H4 } from "../../components/Typography";
 import styles from "./index.module.scss";
 
 const Header = ({ pink }) => {
@@ -15,6 +15,13 @@ const Header = ({ pink }) => {
             alt="Big Kitty Logo"
           />
         </Link>
+        <ul className={styles.Nav}>
+          <li key="about">
+            <Link href="/about">
+              <a className={styles.Link}>About</a>
+            </Link>
+          </li>
+        </ul>
       </div>
     </header>
   );
