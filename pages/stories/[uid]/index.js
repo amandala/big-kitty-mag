@@ -2,16 +2,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.scss";
 import Header from "../../../components/Header";
 import Head from "../../../components/Head";
-import {
-  H1,
-  Meta,
-  H5,
-  H3,
-  H2,
-  Body,
-  BodyExtraSmall,
-  BodySmall,
-} from "../../../components/Typography";
+import { H1, Meta, H5, H3, H2, Body } from "../../../components/Typography";
 import Photo from "../../../components/Photo";
 import { Client } from "../../../prismic-configuration.js";
 
