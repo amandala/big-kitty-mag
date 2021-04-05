@@ -14,7 +14,6 @@ import Head from "../../components/Head";
 import styles from "./index.module.scss";
 
 const About = ({ about }) => {
-  console.log(about);
   return (
     <div className={styles.Page}>
       <Head title="About Big Kitty Magazine" />
