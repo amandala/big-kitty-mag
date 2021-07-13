@@ -13,9 +13,11 @@ const Story = (props) => {
   if (props.data) {
     return (
       <div className={styles.Page}>
+        
         <Head title={props.data.title} />
         <Header pink={true} />
         <main className={styles.Wrapper}>
+        <img className={styles.Ad} src="https://images.prismic.io/big-kitty-mag/8fccb55b-5401-4161-885e-8b40a6cb3f5b_FolkFest.jpg" alt="Folk Fest"/>
           <div className={styles.Header}>
             <H1>{props.data.title}</H1>
             <H5>{props.data.author.data.name}</H5>
