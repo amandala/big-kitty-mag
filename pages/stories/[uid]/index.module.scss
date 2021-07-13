@@ -59,6 +59,10 @@
 }
 
 @include breakpoint(large) {
+  .Ad {
+    margin-top: 28px;
+  }
+
   .Page {
     min-height: unset;
   }

@@ -47,18 +47,18 @@ const Story = (props) => {
               })}
             </div>
           </div>
-          {props.data.links.length > 0 ? (
+          {props.data.links[0] > 0 ? (
             <div className={[styles.Resources]}>
               <H1 className={styles.LinksHeading}>Links and Resources</H1>
               {props.data.links.map((link) => {
                 return (
-                  <a
+                  link.link.url && link.link.display_text ? <a
                     className={styles.Anchor}
                     href={link.link.url}
                     target={link.link.target}
                   >
                     <Body className={styles.Link}>{link.display_text}</Body>
-                  </a>
+                  </a>: null
                 );
               })}
             </div>
