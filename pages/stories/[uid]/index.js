@@ -6,63 +6,109 @@ import { H1, Meta, H5, H3, H2, Body } from "../../../components/Typography";
 import Photo from "../../../components/Photo";
 import { Client } from "../../../prismic-configuration.js";
 
-const Story = (props) => {
+const Story = props => {
   const router = useRouter();
   const { uid } = router.query;
 
   if (props.data) {
     return (
       <div className={styles.Page}>
-        
-        <Head title={props.data.title} />
+        <Head title={props.data.title}>
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+        </Head>
         <Header pink={true} />
         <main className={styles.Wrapper}>
-        <img className={styles.Ad} src="https://images.prismic.io/big-kitty-mag/8fccb55b-5401-4161-885e-8b40a6cb3f5b_FolkFest.jpg" alt="Folk Fest"/>
+          <img
+            className={styles.Ad}
+            src="https://images.prismic.io/big-kitty-mag/8fccb55b-5401-4161-885e-8b40a6cb3f5b_FolkFest.jpg"
+            alt="Folk Fest"
+          />
           <div className={styles.Header}>
-            <H1>{props.data.title}</H1>
-            <H5>{props.data.author.data.name}</H5>
-            <Meta>{props.data.released}</Meta>
+            <H1>
+              {props.data.title}
+            </H1>
+            <H5>
+              {props.data.author.data.name}
+            </H5>
+            <Meta>
+              {props.data.released}
+            </Meta>
           </div>
           <div>
-            {props.data.main_photo.url ? (
-              <Photo photo={props.data.main_photo} />
-            ) : null}
+            {props.data.main_photo.url
+              ? <Photo photo={props.data.main_photo} />
+              : null}
           </div>
           <div>
             <div>
-              {props.data.story.map((s) => {
+              {props.data.story.map(s => {
                 if (s.type === "heading3") {
-                  return <H3 className={styles.Heading}>{s.text}</H3>;
+                  return (
+                    <H3 className={styles.Heading}>
+                      {s.text}
+                    </H3>
+                  );
                 }
                 if (s.type === "heading2") {
-                  return <H2 className={styles.Heading}>{s.text}</H2>;
+                  return (
+                    <H2 className={styles.Heading}>
+                      {s.text}
+                    </H2>
+                  );
                 }
                 if (s.type === "heading1") {
-                  return <Body className={styles.PullQuote}>{s.text}</Body>;
+                  return (
+                    <Body className={styles.PullQuote}>
+                      {s.text}
+                    </Body>
+                  );
                 }
                 if (s.type === "image") {
                   return <Photo photo={s} />;
                 }
-                return <Body>{s.text}</Body>;
-              })}
-            </div>
-          </div>
-          {props.data.links[0] > 0 ? (
-            <div className={[styles.Resources]}>
-              <H1 className={styles.LinksHeading}>Links and Resources</H1>
-              {props.data.links.map((link) => {
                 return (
-                  link.link.url && link.link.display_text ? <a
-                    className={styles.Anchor}
-                    href={link.link.url}
-                    target={link.link.target}
-                  >
-                    <Body className={styles.Link}>{link.display_text}</Body>
-                  </a>: null
+                  <Body>
+                    {s.text}
+                  </Body>
                 );
               })}
             </div>
-          ) : null}
+          </div>
+          {props.data.links[0] > 0
+            ? <div className={[styles.Resources]}>
+                <H1 className={styles.LinksHeading}>Links and Resources</H1>
+                {props.data.links.map(link => {
+                  return link.link.url && link.link.display_text
+                    ? <a
+                        className={styles.Anchor}
+                        href={link.link.url}
+                        target={link.link.target}
+                      >
+                        <Body className={styles.Link}>
+                          {link.display_text}
+                        </Body>
+                      </a>
+                    : null;
+                })}
+              </div>
+            : null}
         </main>
       </div>
     );
