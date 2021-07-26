@@ -27,7 +27,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
     const cloned = JSON.parse(JSON.stringify(stories))
     
     setFilteredStories(
-      cloned.filter(story => story.data.title.toLowerCase().includes(searchTerm))
+      cloned.filter(story => story.data.title.toLowerCase().indexOf(searchTerm) > -1) 
     )
     // const filtered = JSON.parse(JSON.stringify(searchresults));
 
