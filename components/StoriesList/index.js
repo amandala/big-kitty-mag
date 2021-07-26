@@ -23,28 +23,28 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   }
 
   React.useEffect(() => {
-    const searchresults = [];
-    const filtered = [];
+    const searchresults = JSON.parse(JSON.stringify(stories));
 
-    stories.forEach(story => {
+    searchresults.filter(story => {
       if (story.data.title.toLowerCase().includes(searchTerm)) {
        searchresults.push(story) 
       }
     });
 
-    
+    // const filtered = JSON.parse(JSON.stringify(searchresults));
 
-    searchresults.forEach((story) => {
-      if (activeFilter) {
-        return story.data.tags.find((tag) => {
-          if (tag.tag.data.title && tag.tag.data.title === activeFilter){
-            filtered.push(story)
-          }
-        });
-      } else {
-        filtered.push(story)
-      }
-    });
+
+    // filtered.filter((story) => {
+    //   if (activeFilter) {
+    //     return story.data.tags.find((tag) => {
+    //       if (tag.tag.data.title && tag.tag.data.title === activeFilter){
+    //         return story
+    //       }
+    //     });
+    //   } else {
+    //     return story;
+    //   }
+    // });
 
     
     setFilteredStories(searchresults);
