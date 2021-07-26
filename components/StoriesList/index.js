@@ -44,18 +44,10 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   React.useEffect(() => {
   
 
-  if(searchTerm){
-    
-    const filtered = filteredStories.filter(story => story.data.title.toLowerCase().indexOf(searchTerm) > -1);
-
-    
-    const chunked = chunkArray(filtered, 3);
-    setChunked(chunked)
-  }
-  else {
+ 
     const chunked = chunkArray(filteredStories, 3);
     setChunked(chunked)
-  }
+  
     
     
   },[filteredStories, searchTerm])
