@@ -3,7 +3,7 @@ import cx from "classnames";
 import Link from "next/link";
 import styles from "./index.module.scss";
 
-const StoriesList = ({ stories, activeFilter, ads }) => {
+const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   const [adNumber, setAdNumber] = React.useState(0);
 
   function chunkArray(myArray, chunk_size) {
@@ -19,11 +19,23 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
     return tempArray;
   }
 
-  const filteredStories = stories.results.filter((story) => {
+  const searchResults = stories.results.filter(story => {
+    if(searchTerm){
+      if(story.data.title.toLowerCase().includes(searchTerm)) {
+        return story;
+      }
+    }
+    else {
+      return story;
+    }
+  });
+
+  const filteredStories = searchResults.filter((story) => {
     if (activeFilter) {
       return story.data.tags.find((tag) => {
-        if (tag.tag.data.title && tag.tag.data.title === activeFilter)
+        if (tag.tag.data.title && tag.tag.data.title === activeFilter){
           return story;
+        }
       });
     } else {
       return story;

@@ -135,6 +135,17 @@
   display: grid;
 }
 
+.Search {
+  margin: 24px auto;
+  width: 100%;
+  max-width: 300px;
+  font-size: 20px;
+  padding: 10px 10px 5px 10px;
+  font-family: $big-john;
+  line-height: 24px;
+  outline-color: $hollywood-cerise;
+}
+
 @include breakpoint(medium) {
   .FeatureStory {
     display: flex;

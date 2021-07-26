@@ -12,6 +12,8 @@ import { Client } from "../prismic-configuration.js";
 
 const Home = ({ home, stories, ads, tags }) => {
   const [activeFilter, setActiveFilter] = React.useState();
+  const [searchTerm, setSearchTerm] = React.useState();
+
   return (
     <div className={styles.Main}>
       <Head title="Home" >
@@ -68,6 +70,9 @@ const Home = ({ home, stories, ads, tags }) => {
           <H1 className={styles.Header}>{`Viewing: ${
             activeFilter ? activeFilter : "All"
           } Stories`}</H1>
+          <div>
+            <input className={styles.Search} value={searchTerm} onChange={(d) => setSearchTerm(d.target.value)} />
+          </div>
         </div>
         <div className={styles.TagWrapper}>
           <div className={styles.Tags}>
@@ -103,6 +108,7 @@ const Home = ({ home, stories, ads, tags }) => {
         stories={stories}
         activeFilter={activeFilter}
         ads={ads.results}
+        searchTerm={searchTerm}
       />
     </div>
   );
