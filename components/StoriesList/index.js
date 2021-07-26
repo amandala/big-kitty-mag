@@ -22,7 +22,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
 
   React.useEffect(() => {
     const searchResults = stories.results.filter(story => {
-      if(searchTerm){
+      if(searchTerm && searchTerm.length > 0){
         if(story.data.title.toLowerCase().includes(searchTerm)) {
           return story;
         }
@@ -74,11 +74,11 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
     <div className={styles.Page}>
       {chunked.map((chunk, chunkIndex) => {
         return (
-          <div>
+          <div key={chunkIndex}>
             {chunk.map((story) => {
               return (
-                <>
-                  <Link href={`/stories/${story.uid}`}>
+                  <div key={story.uid}>
+                  <Link href={`/stories/${story.uid}`} >
                     <section className={styles.StoryWrapper}>
                       <div className={styles.StoryDetails}>
                         <div className={styles.Preview}>
@@ -92,6 +92,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
                               if (tag.tag.type === "tag") {
                                 return (
                                   <span
+                                    key={tag?.tag?.data?.title}
                                     className={styles.Tag}
                                     style={{
                                       backgroundColor: tag?.tag?.data?.color,
@@ -119,7 +120,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
                       </div>
                     </section>
                   </Link>
-                </>
+                </div>
               );
             })}
 
