@@ -2,10 +2,12 @@ import { H1, H2, BodySmall, Meta } from "../Typography";
 import cx from "classnames";
 import Link from "next/link";
 import styles from "./index.module.scss";
+import React from "react";
 
 const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   const [adNumber, setAdNumber] = React.useState(0);
   const [filteredStories, setFilteredStories] = React.useState(0);
+  const [chunkedStories, setChunked] = React.useState(chunkArray(stories.results, 3));
 
   function chunkArray(myArray, chunk_size) {
     var index = 0;
@@ -21,6 +23,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   }
 
   React.useEffect(() => {
+    
     const searchResults = stories.results.filter(story => {
       if(searchTerm && searchTerm.length > 0){
         if(story.data.title.toLowerCase().includes(searchTerm)) {
@@ -31,6 +34,8 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
         return story;
       }
     });
+    
+    
 
     const filtered = searchResults.filter((story) => {
       if (activeFilter) {
@@ -44,10 +49,16 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
       }
     });
 
-    setFilteredStories(filtered)
-  }, [searchTerm, activeFilter])
+    
 
-  const chunked = chunkArray(filteredStories, 3);
+    setFilteredStories(filtered);
+  }, [searchTerm, activeFilter]);
+
+  React.useEffect(() => {
+    const chunked = chunkArray(filteredStories, 3);
+    setChunked(chunked)
+  },[filteredStories])
+
 
   const renderAd = (ad) => {
     if (ad && ad.data) {
@@ -72,7 +83,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
 
   return (
     <div className={styles.Page}>
-      {chunked.map((chunk, chunkIndex) => {
+      {chunkedStories.map((chunk, chunkIndex) => {
         return (
           <div key={chunkIndex}>
             {chunk.map((story) => {
