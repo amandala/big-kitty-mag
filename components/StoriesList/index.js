@@ -88,7 +88,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
               
               
               return (
-                <div key={story.uid} className={cx({[styles.Show]: story.data.title.includes(searchTerm) || !searchTerm || searchTerm.length < 1})}>
+                <div key={story.uid} className={cx({[styles.Show]: story.data.title.toLowerCase().includes(searchTerm) || !searchTerm || searchTerm.length < 1})}>
                   <Link href={`/stories/${story.uid}`} >
                     <section className={styles.StoryWrapper}>
                       <div className={styles.StoryDetails}>
