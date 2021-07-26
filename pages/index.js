@@ -71,8 +71,9 @@ const Home = ({ home, stories, ads, tags }) => {
             activeFilter ? activeFilter : "All"
           } Stories`}</H1>
           <div className={styles.SearchBox}>
-            <img className={styles.SearchIcon} src="/searchIcon.svg" />
+            
             <input className={styles.Search} value={searchTerm} onChange={(d) => setSearchTerm(d.target.value)} />
+            <img className={styles.SearchIcon} src="/searchIcon.svg" />
           </div>
         </div>
         <div className={styles.TagWrapper}>
