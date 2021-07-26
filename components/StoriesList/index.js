@@ -23,28 +23,35 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   }
 
   React.useEffect(() => {
+    console.log(searchTerm)
 
-    const filtered = stories.filter((story) => {
-      if (activeFilter) {
-        return story.data.tags.find((tag) => {
-          if (tag.tag.data.title && tag.tag.data.title === activeFilter){
-            return story;
-          }
-        });
-      } else {
-        return story;
-      }
+    const searched = stories.filter(story => {
+      return story.data.title.toLowerCase().includes(searchTerm) 
     });
 
+    console.log(searched);
+
+    // const filtered = stories.filter((story) => {
+    //   if (activeFilter) {
+    //     return story.data.tags.find((tag) => {
+    //       if (tag.tag.data.title && tag.tag.data.title === activeFilter){
+    //         return story;
+    //       }
+    //     });
+    //   } else {
+    //     return story;
+    //   }
+    // });
+
     
-    setFilteredStories(filtered);
+    setFilteredStories(searched);
     
-  }, [stories, activeFilter]);
+  }, [stories, activeFilter, searchTerm]);
 
   React.useEffect(() => {
   
     const chunked = chunkArray(filteredStories, 3);
-    setChunked(chunked)
+    setChunked(chunked);
   
   },[filteredStories, searchTerm, stories])
 
