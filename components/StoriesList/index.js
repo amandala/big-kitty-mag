@@ -80,55 +80,59 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
         return (
           <div key={chunkIndex}>
             {chunk.map((story) => {
-              return (
+              
+              if (story.data.title.toLowerCase().includes(searchTerm)) {
+                return (
                   <div key={story.uid}>
-                  <Link href={`/stories/${story.uid}`} >
-                    <section className={styles.StoryWrapper}>
-                      <div className={styles.StoryDetails}>
-                        <div className={styles.Preview}>
-                          <H2 className={styles.Title}>{story.data.title}</H2>
-                          <Meta className={styles.Author}>
-                            By {story.data.author.data.name}
-                          </Meta>
-                          <BodySmall> {story.data.deck}</BodySmall>
-                          <div className={styles.Tags}>
-                            {story.data.tags.map((tag) => {
-                              if (tag.tag.type === "tag") {
-                                return (
-                                  <span
-                                    key={tag?.tag?.data?.title}
-                                    className={styles.Tag}
-                                    style={{
-                                      backgroundColor: tag?.tag?.data?.color,
-                                    }}
-                                  >
-                                    {tag?.tag?.data?.title}
-                                  </span>
-                                );
-                              }
-                            })}
+                    <Link href={`/stories/${story.uid}`} >
+                      <section className={styles.StoryWrapper}>
+                        <div className={styles.StoryDetails}>
+                          <div className={styles.Preview}>
+                            <H2 className={styles.Title}>{story.data.title}</H2>
+                            <Meta className={styles.Author}>
+                              By {story.data.author.data.name}
+                            </Meta>
+                            <BodySmall> {story.data.deck}</BodySmall>
+                            <div className={styles.Tags}>
+                              {story.data.tags.map((tag) => {
+                                if (tag.tag.type === "tag") {
+                                  return (
+                                    <span
+                                      key={tag?.tag?.data?.title}
+                                      className={styles.Tag}
+                                      style={{
+                                        backgroundColor: tag?.tag?.data?.color,
+                                      }}
+                                    >
+                                      {tag?.tag?.data?.title}
+                                    </span>
+                                  );
+                                }
+                              })}
+                            </div>
                           </div>
+                          <Meta className={styles.ReadMore}> Keep Reading</Meta>
                         </div>
-                        <Meta className={styles.ReadMore}> Keep Reading</Meta>
-                      </div>
-                      <div className={styles.ImageWrapper}>
-                        <img
-                          className={cx(styles.StoryPhoto, {
-                            [styles.StoryPhotoPortrait]:
-                              story.data?.main_photo?.dimensions &&
-                              story.data.main_photo.dimensions.width <
+                        <div className={styles.ImageWrapper}>
+                          <img
+                            className={cx(styles.StoryPhoto, {
+                              [styles.StoryPhotoPortrait]:
+                                story.data?.main_photo?.dimensions &&
+                                story.data.main_photo.dimensions.width <
                                 story.data.main_photo.dimensions.height,
-                          })}
-                          src={story.data.main_photo.url}
-                        />
-                      </div>
-                    </section>
-                  </Link>
-                </div>
-              );
+                            })}
+                            src={story.data.main_photo.url}
+                          />
+                        </div>
+                      </section>
+                    </Link>
+                  </div>
+                );
+              } else return null;
+              
             })}
 
-            {renderAd(ads[chunkIndex])}
+            {/* {renderAd(ads[chunkIndex])} */}
           </div>
         );
       })}

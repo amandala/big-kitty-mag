@@ -13,16 +13,8 @@ import { Client } from "../prismic-configuration.js";
 const Home = ({ home, stories, ads, tags }) => {
   const [activeFilter, setActiveFilter] = React.useState();
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [filtered, setFiltered] = React.useState(stories.results);
-
-  React.useEffect(() => {
-    const searchResults = stories.results.filter(story => {
-      return story.data.title.toLowerCase().indexOf(searchTerm) > -1
-    });
-    
-    setFiltered(searchResults);
-  },[searchTerm, stories])
   
+
   return (
     <div className={styles.Main}>
       <Head title="Home" >
@@ -117,9 +109,10 @@ const Home = ({ home, stories, ads, tags }) => {
         </div>
       </div>
       <StoriesList
-        stories={filtered}
+        stories={stories.results}
         activeFilter={activeFilter}
         ads={ads.results}
+        searchTerm={searchTerm}
       />
     </div>
   );
