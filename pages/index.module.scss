@@ -135,8 +135,12 @@
   display: grid;
 }
 
+.SearchBox {
+  display: grid;
+  margin: 24px 0;
+}
+
 .Search {
-  margin: 24px auto;
   width: 100%;
   max-width: 300px;
   font-size: 20px;
@@ -144,6 +148,14 @@
   font-family: $big-john;
   line-height: 24px;
   outline-color: $hollywood-cerise;
+  background-color: black;
+  border: 3px solid white;
+  color: white;
+}
+
+.SearchIcon {
+  fill: white;
+  margin-right: 10px;
 }
 
 @include breakpoint(medium) {
