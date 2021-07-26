@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./index.module.scss";
 import React from "react";
 
-const StoriesList = ({ stories, activeFilter, ads }) => {
+const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   const [adNumber, setAdNumber] = React.useState(0);
   const [filteredStories, setFilteredStories] = React.useState(0);
   const [chunkedStories, setChunked] = React.useState(chunkArray(stories, 3));
@@ -36,14 +36,29 @@ const StoriesList = ({ stories, activeFilter, ads }) => {
       }
     });
 
+    
     setFilteredStories(filtered);
-    console.log(stories.results)
+    
   }, [stories, activeFilter]);
 
   React.useEffect(() => {
+  
+
+  if(searchTerm){
+    
+    const filtered = filteredStories.filter(story => story.data.title.toLowerCase().indexOf(searchTerm)> -1);
+
+    
+    const chunked = chunkArray(filtered, 3);
+    setChunked(chunked)
+  }
+  else {
     const chunked = chunkArray(filteredStories, 3);
     setChunked(chunked)
-  },[filteredStories])
+  }
+    
+    
+  },[filteredStories, searchTerm])
 
 
   const renderAd = (ad) => {
