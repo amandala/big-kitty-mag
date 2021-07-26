@@ -27,7 +27,7 @@ const Search = props => {
           {router.query.term}
         </H1>
       </div>
-      <StoriesList stories={props.results} />
+      <StoriesList stories={props.results} searchTerm={router.query.term} />
     </div>
   )
 }
