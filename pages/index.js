@@ -12,7 +12,7 @@ import { Client } from "../prismic-configuration.js";
 
 const Home = ({ home, stories, ads, tags }) => {
   const [activeFilter, setActiveFilter] = React.useState();
-  const [searchTerm, setSearchTerm] = React.useState();
+  const [searchTerm, setSearchTerm] = React.useState("");
   
   return (
     <div className={styles.Main}>

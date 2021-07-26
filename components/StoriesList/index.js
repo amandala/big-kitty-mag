@@ -46,7 +46,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
 
   if(searchTerm){
     
-    const filtered = filteredStories.filter(story => story.data.title.toLowerCase().indexOf(searchTerm)> -1);
+    const filtered = filteredStories.filter(story => story.data.title.toLowerCase().indexOf(searchTerm) > -1);
 
     
     const chunked = chunkArray(filtered, 3);

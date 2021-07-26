@@ -140,7 +140,7 @@
   flex-direction: row;
   margin: 24px 0;
   align-items: center;
-  justify-content: center;
+  display: none;
 }
 
 .Search {
@@ -194,6 +194,11 @@
 @include breakpoint(large) {
   .Banner {
     padding: 40px;
+  }
+
+  .SearchBox {
+    display: flex;
+    justify-content: center;
   }
 }
 
