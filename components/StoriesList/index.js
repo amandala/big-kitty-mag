@@ -23,13 +23,19 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   }
 
   React.useEffect(() => {
-    console.log(searchTerm)
+    console.log(searchTerm);
 
-    const searched = stories.filter(story => {
-      return story.data.title.toLowerCase().includes(searchTerm.toLowerCase()) 
+    const searchresults = [];
+
+    stories.forEach(story => {
+      console.log(story);
+      if (story.data.title.toLowerCase().includes(searchTerm)) {
+       searchresults.push(story) 
+      }
+      //return story.data.title.toLowerCase().includes(searchTerm.toLowerCase()) 
     });
 
-    console.log(searched);
+    console.log(searchresults);
 
     // const filtered = stories.filter((story) => {
     //   if (activeFilter) {
@@ -44,7 +50,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
     // });
 
     
-    setFilteredStories(searched);
+    setFilteredStories(searchresults);
     
   }, [stories, activeFilter, searchTerm]);
 
