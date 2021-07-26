@@ -143,9 +143,17 @@
   justify-content: center;
 }
 
+.SearchBoxMobile {
+  display: flex;
+  flex-direction: row;
+  margin: 24px 0;
+  align-items: center;
+  justify-content: center;
+}
+
 .Search {
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   font-size: 20px;
   padding: 10px 10px 5px 10px;
   font-family: $big-john;
@@ -199,6 +207,10 @@
   .SearchBox {
     display: flex;
     justify-content: flex-start;
+  }
+
+  .SearchBoxMobile {
+    display: none;
   }
 }
 

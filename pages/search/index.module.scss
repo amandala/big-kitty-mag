@@ -1,0 +1,79 @@
+@import "../../styles/variables";
+
+.Ad {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.Page {
+  min-height: 100vh;
+}
+
+.Wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.Header {
+  padding: 24px 0;
+  margin: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Heading {
+  margin: 32px 0 32px;
+}
+
+.PullQuote {
+  opacity: 0.6;
+  font-size: 32px;
+  margin: 32px 32px;
+  border-left: 1px solid black;
+  padding-left: 15px;
+}
+
+.Resources {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 60px 0;
+}
+
+.Link {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 40px;
+  color: black;
+
+  &:hover,
+  &:focus {
+    color: $hollywood-cerise;
+  }
+}
+
+.LinksHeading {
+  margin-bottom: 10px;
+}
+
+.Anchor {
+  text-decoration: none;
+}
+
+@include breakpoint(large) {
+  .Ad {
+    margin-top: 28px;
+  }
+
+  .Page {
+    min-height: unset;
+  }
+  .Wrapper {
+    padding: 32px 0;
+  }
+
+  .Header {
+    margin: 60px 0;
+  }
+}

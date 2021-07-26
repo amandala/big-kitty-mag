@@ -134,7 +134,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
                 </div>
               );
             })}
-            {renderAd(ads[chunkIndex])}
+            {ads && renderAd(ads[chunkIndex])}
           </div>
         );
       })}

@@ -40,7 +40,6 @@ const Home = ({ home, stories, ads, tags }) => {
               <Body className={styles.Preview}>
                 {home.data.feature_story.data.deck}
               </Body>
-              {/* <Meta> {home.data.feature_story.data.author.name}</Meta> */}
             </div>
           </div>
         </Link>
@@ -72,9 +71,12 @@ const Home = ({ home, stories, ads, tags }) => {
             activeFilter ? activeFilter : "All"
           } Stories`}</H1>
           <div className={styles.SearchBox}>
-            
             <input className={styles.Search} value={searchTerm} onChange={(d) => setSearchTerm(d.target.value)} />
             <img className={styles.SearchIcon} src="/searchIcon.svg" />
+          </div>
+           <div className={styles.SearchBoxMobile}>
+            <input className={styles.Search} value={searchTerm} onChange={(d) => setSearchTerm(d.target.value)} />
+            <Link href={`/search?term=${searchTerm}`}><img className={styles.SearchIcon} src="/searchIcon.svg" /></Link>
           </div>
         </div>
         <div className={styles.TagWrapper}>
@@ -112,7 +114,6 @@ const Home = ({ home, stories, ads, tags }) => {
         stories={stories.results}
         activeFilter={activeFilter}
         ads={ads.results}
-        searchTerm={searchTerm}
       />
     </div>
   );
