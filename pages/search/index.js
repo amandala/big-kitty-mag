@@ -11,8 +11,8 @@ import StoriesList from '../../components/StoriesList'
 const Search = props => {
   const router = useRouter()
 
-  const data = props.results.filter(story =>
-    story.data.title.toLowerCase().includes(router.query.term)
+  const data = props.results.filter(
+    story => story.data.title.toLowerCase().indexOf(router.query.term) > -1
   )
 
   return (
