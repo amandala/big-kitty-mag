@@ -6,7 +6,7 @@ import React from "react";
 
 const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   const [adNumber, setAdNumber] = React.useState(0);
-  const [filteredStories, setFilteredStories] = React.useState(0);
+  const [filteredStories, setFilteredStories] = React.useState([]);
   const [chunkedStories, setChunked] = React.useState(chunkArray(stories, 3));
 
   function chunkArray(myArray, chunk_size) {
@@ -23,14 +23,12 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   }
 
   React.useEffect(() => {
-    const searchresults = JSON.parse(JSON.stringify(stories));
 
-    searchresults.filter(story => {
-      if (story.data.title.toLowerCase().includes(searchTerm)) {
-       searchresults.push(story) 
-      }
-    });
-
+    const cloned = JSON.parse(JSON.stringify(stories))
+    
+    setFilteredStories(
+      cloned.filter(story => story.data.title.toLowerCase().includes(searchTerm))
+    )
     // const filtered = JSON.parse(JSON.stringify(searchresults));
 
 
@@ -47,12 +45,12 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
     // });
 
     
-    setFilteredStories(searchresults);
+    //setFilteredStories(searchresults);
     
   }, [stories, activeFilter, searchTerm]);
 
   React.useEffect(() => {
-  
+    
     const chunked = chunkArray(filteredStories, 3);
     setChunked(chunked);
   
@@ -87,57 +85,54 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
           <div key={chunkIndex}>
             {chunk.map((story) => {
               
-              if (story.data.title.toLowerCase().indexOf(searchTerm) > -1) {
-                return (
-                  <div key={story.uid}>
-                    <Link href={`/stories/${story.uid}`} >
-                      <section className={styles.StoryWrapper}>
-                        <div className={styles.StoryDetails}>
-                          <div className={styles.Preview}>
-                            <H2 className={styles.Title}>{story.data.title}</H2>
-                            <Meta className={styles.Author}>
-                              By {story.data.author.data.name}
-                            </Meta>
-                            <BodySmall> {story.data.deck}</BodySmall>
-                            <div className={styles.Tags}>
-                              {story.data.tags.map((tag) => {
-                                if (tag.tag.type === "tag") {
-                                  return (
-                                    <span
-                                      key={tag?.tag?.data?.title}
-                                      className={styles.Tag}
-                                      style={{
-                                        backgroundColor: tag?.tag?.data?.color,
-                                      }}
-                                    >
-                                      {tag?.tag?.data?.title}
-                                    </span>
-                                  );
-                                }
-                              })}
-                            </div>
-                          </div>
-                          <Meta className={styles.ReadMore}> Keep Reading</Meta>
-                        </div>
-                        <div className={styles.ImageWrapper}>
-                          <img
-                            className={cx(styles.StoryPhoto, {
-                              [styles.StoryPhotoPortrait]:
-                                story.data?.main_photo?.dimensions &&
-                                story.data.main_photo.dimensions.width <
-                                story.data.main_photo.dimensions.height,
-                            })}
-                            src={story.data.main_photo.url}
-                          />
-                        </div>
-                      </section>
-                    </Link>
-                  </div>
-                );
-              } else return null;
               
+              return (
+                <div key={story.uid}>
+                  <Link href={`/stories/${story.uid}`} >
+                    <section className={styles.StoryWrapper}>
+                      <div className={styles.StoryDetails}>
+                        <div className={styles.Preview}>
+                          <H2 className={styles.Title}>{story.data.title}</H2>
+                          <Meta className={styles.Author}>
+                            By {story.data.author.data.name}
+                          </Meta>
+                          <BodySmall> {story.data.deck}</BodySmall>
+                          <div className={styles.Tags}>
+                            {story.data.tags.map((tag) => {
+                              if (tag.tag.type === "tag") {
+                                return (
+                                  <span
+                                    key={tag?.tag?.data?.title}
+                                    className={styles.Tag}
+                                    style={{
+                                      backgroundColor: tag?.tag?.data?.color,
+                                    }}
+                                  >
+                                    {tag?.tag?.data?.title}
+                                  </span>
+                                );
+                              }
+                            })}
+                          </div>
+                        </div>
+                        <Meta className={styles.ReadMore}> Keep Reading</Meta>
+                      </div>
+                      <div className={styles.ImageWrapper}>
+                        <img
+                          className={cx(styles.StoryPhoto, {
+                            [styles.StoryPhotoPortrait]:
+                              story.data?.main_photo?.dimensions &&
+                              story.data.main_photo.dimensions.width <
+                              story.data.main_photo.dimensions.height,
+                          })}
+                          src={story.data.main_photo.url}
+                        />
+                      </div>
+                    </section>
+                  </Link>
+                </div>
+              );
             })}
-
             {/* {renderAd(ads[chunkIndex])} */}
           </div>
         );
