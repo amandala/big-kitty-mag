@@ -9,6 +9,10 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   const [filteredStories, setFilteredStories] = React.useState([]);
   const [chunkedStories, setChunked] = React.useState(chunkArray(stories, 3));
 
+  const addSearchFilter = (list) => {
+    return list.filter(story => story.data.title.toLowerCase().includes(searchTerm))
+  }
+
   function chunkArray(myArray, chunk_size) {
     var index = 0;
     var arrayLength = myArray.length;
@@ -24,29 +28,26 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
 
   React.useEffect(() => {
 
-    const cloned = JSON.parse(JSON.stringify(stories))
-    
-    setFilteredStories(
-      cloned.filter(story => story.data.title.toLowerCase().indexOf(searchTerm) > -1) 
-    )
-    // const filtered = JSON.parse(JSON.stringify(searchresults));
+    const filtered = stories.filter((story) => {
+      if (activeFilter) {
+        return story.data.tags.find((tag) => {
+          if (tag.tag.data.title && tag.tag.data.title === activeFilter){
+            return story
+          }
+        });
+      } else {
+        return story;
+      }
+    });
+  
+    if (searchTerm && searchTerm.length > 0) {
+      const searched = addSearchFilter(filtered);
+      setFilteredStories(searched);
+    }
+    else {
+      setFilteredStories(filtered);
+    }
 
-
-    // filtered.filter((story) => {
-    //   if (activeFilter) {
-    //     return story.data.tags.find((tag) => {
-    //       if (tag.tag.data.title && tag.tag.data.title === activeFilter){
-    //         return story
-    //       }
-    //     });
-    //   } else {
-    //     return story;
-    //   }
-    // });
-
-    
-    //setFilteredStories(searchresults);
-    
   }, [stories, activeFilter, searchTerm]);
 
   React.useEffect(() => {
@@ -133,7 +134,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
                 </div>
               );
             })}
-            {/* {renderAd(ads[chunkIndex])} */}
+            {renderAd(ads[chunkIndex])}
           </div>
         );
       })}

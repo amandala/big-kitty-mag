@@ -13,7 +13,6 @@ import { Client } from "../prismic-configuration.js";
 const Home = ({ home, stories, ads, tags }) => {
   const [activeFilter, setActiveFilter] = React.useState();
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [storiesToShow, setStoriesToShow] = React.useState(JSON.parse(JSON.stringify(stories.results)));
   
 
   return (
@@ -110,7 +109,7 @@ const Home = ({ home, stories, ads, tags }) => {
         </div>
       </div>
       <StoriesList
-        stories={storiesToShow}
+        stories={stories.results}
         activeFilter={activeFilter}
         ads={ads.results}
         searchTerm={searchTerm}

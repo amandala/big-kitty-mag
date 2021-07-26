@@ -136,7 +136,7 @@
 }
 
 .SearchBox {
-  display: flex;
+  display: none;
   flex-direction: row;
   margin: 24px 0;
   align-items: center;
@@ -197,6 +197,7 @@
   }
 
   .SearchBox {
+    display: flex;
     justify-content: flex-start;
   }
 }
