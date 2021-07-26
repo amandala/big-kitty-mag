@@ -43,13 +43,9 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
 
   React.useEffect(() => {
   
-
- 
     const chunked = chunkArray(filteredStories, 3);
     setChunked(chunked)
   
-    
-    
   },[filteredStories, searchTerm, stories])
 
 
@@ -81,7 +77,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
           <div key={chunkIndex}>
             {chunk.map((story) => {
               
-              if (story.data.title.toLowerCase().includes(searchTerm)) {
+              if (story.data.title.toLowerCase().indexOf(searchTerm) > -1) {
                 return (
                   <div key={story.uid}>
                     <Link href={`/stories/${story.uid}`} >
