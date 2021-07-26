@@ -24,21 +24,21 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
 
   React.useEffect(() => {
 
-    const filtered = stories.results.filter((story) => {
-      if (activeFilter) {
-        return story.data.tags.find((tag) => {
-          if (tag.tag.data.title && tag.tag.data.title === activeFilter){
-            return story;
-          }
-        });
-      } else {
-        return story;
-      }
-    });
+    // const filtered = stories.results.filter((story) => {
+    //   if (activeFilter) {
+    //     return story.data.tags.find((tag) => {
+    //       if (tag.tag.data.title && tag.tag.data.title === activeFilter){
+    //         return story;
+    //       }
+    //     });
+    //   } else {
+    //     return story;
+    //   }
+    // });
 
     
     if(searchTerm){
-      const searchResults = filtered.filter(story => {
+      const searchResults = stories.results.filter(story => {
         if(searchTerm && searchTerm.length > 0){
           if(story.data.title.toLowerCase().includes(searchTerm)) {
             return story;
@@ -52,12 +52,9 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
       setFilteredStories(searchResults);
     }
     else {
-      setFilteredStories(filtered);
+      setFilteredStories(stories.results);
     }
    
-    
-
-
   }, [searchTerm, activeFilter]);
 
   React.useEffect(() => {
