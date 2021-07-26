@@ -10,10 +10,13 @@ import StoriesList from '../../components/StoriesList'
 
 const Search = props => {
   const router = useRouter()
+  const searched = []
 
-  const data = props.results.filter(
-    story => story.data.title.toLowerCase().indexOf(router.query.term) > -1
-  )
+  const data = JSON.parse(JSON.stringify(props.results)).forEach(story => {
+    if (story.data.title.toLowerCase().indexOf(router.query.term) > -1) {
+      searched.push({ ...story })
+    }
+  })
 
   return (
     <div className={styles.Page}>
@@ -24,7 +27,7 @@ const Search = props => {
           {router.query.term}
         </H1>
       </div>
-      <StoriesList stories={data} />
+      <StoriesList stories={searched} />
     </div>
   )
 }
