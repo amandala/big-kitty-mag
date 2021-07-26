@@ -17,11 +17,11 @@ const Home = ({ home, stories, ads, tags }) => {
 
   React.useEffect(() => {
     const searchResults = stories.results.filter(story => {
-      return story.data.title.toLowerCase().includes(searchTerm)
+      return story.data.title.toLowerCase().indexOf(searchTerm) > -1
     });
     
     setFiltered(searchResults);
-  },[searchTerm])
+  },[searchTerm, stories])
   
   return (
     <div className={styles.Main}>

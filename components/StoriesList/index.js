@@ -50,7 +50,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   
     
     
-  },[filteredStories, searchTerm])
+  },[filteredStories, searchTerm, stories])
 
 
   const renderAd = (ad) => {
