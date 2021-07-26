@@ -27,7 +27,7 @@ const Search = props => {
           {router.query.term}
         </H1>
       </div>
-      <StoriesList stories={searched} />
+      <StoriesList stories={props.results} />
     </div>
   )
 }
@@ -49,7 +49,6 @@ export async function getServerSideProps (ctx) {
     })
     .then(function (response) {
       return response
-      // response is the response object, response.results holds the documents
     })
 
   return {
