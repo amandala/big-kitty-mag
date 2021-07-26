@@ -71,7 +71,7 @@ const Home = ({ home, stories, ads, tags }) => {
             activeFilter ? activeFilter : "All"
           } Stories`}</H1>
           <div className={styles.SearchBox}>
-            <input className={styles.Search} value={searchTerm} onChange={(d) => setSearchTerm(d.target.value.toLowerCase())} />
+            <input className={styles.Search} value={searchTerm} onChange={(d) => setSearchTerm(d.target.value)} />
             <img className={styles.SearchIcon} src="/searchIcon.svg" />
           </div>
            <div className={styles.SearchBoxMobile}>
@@ -114,6 +114,7 @@ const Home = ({ home, stories, ads, tags }) => {
         stories={stories.results}
         activeFilter={activeFilter}
         ads={ads.results}
+        searchTerm={searchTerm}
       />
     </div>
   );
