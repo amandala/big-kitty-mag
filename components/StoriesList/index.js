@@ -5,6 +5,7 @@ import styles from "./index.module.scss";
 
 const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   const [adNumber, setAdNumber] = React.useState(0);
+  const [filteredStories, setFilteredStories] = React.useState(0);
 
   function chunkArray(myArray, chunk_size) {
     var index = 0;
@@ -19,28 +20,32 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
     return tempArray;
   }
 
-  const searchResults = stories.results.filter(story => {
-    if(searchTerm){
-      if(story.data.title.toLowerCase().includes(searchTerm)) {
-        return story;
-      }
-    }
-    else {
-      return story;
-    }
-  });
-
-  const filteredStories = searchResults.filter((story) => {
-    if (activeFilter) {
-      return story.data.tags.find((tag) => {
-        if (tag.tag.data.title && tag.tag.data.title === activeFilter){
+  React.useEffect(() => {
+    const searchResults = stories.results.filter(story => {
+      if(searchTerm){
+        if(story.data.title.toLowerCase().includes(searchTerm)) {
           return story;
         }
-      });
-    } else {
-      return story;
-    }
-  });
+      }
+      else {
+        return story;
+      }
+    });
+
+    const filtered = searchResults.filter((story) => {
+      if (activeFilter) {
+        return story.data.tags.find((tag) => {
+          if (tag.tag.data.title && tag.tag.data.title === activeFilter){
+            return story;
+          }
+        });
+      } else {
+        return story;
+      }
+    });
+
+    setFilteredStories(filtered)
+  }, [searchTerm, activeFilter])
 
   const chunked = chunkArray(filteredStories, 3);
 
