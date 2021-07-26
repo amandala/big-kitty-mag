@@ -4,10 +4,10 @@ import Link from "next/link";
 import styles from "./index.module.scss";
 import React from "react";
 
-const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
+const StoriesList = ({ stories, activeFilter, ads }) => {
   const [adNumber, setAdNumber] = React.useState(0);
   const [filteredStories, setFilteredStories] = React.useState(0);
-  const [chunkedStories, setChunked] = React.useState(chunkArray(stories.results, 3));
+  const [chunkedStories, setChunked] = React.useState(chunkArray(stories, 3));
 
   function chunkArray(myArray, chunk_size) {
     var index = 0;
@@ -24,38 +24,21 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
 
   React.useEffect(() => {
 
-    // const filtered = stories.results.filter((story) => {
-    //   if (activeFilter) {
-    //     return story.data.tags.find((tag) => {
-    //       if (tag.tag.data.title && tag.tag.data.title === activeFilter){
-    //         return story;
-    //       }
-    //     });
-    //   } else {
-    //     return story;
-    //   }
-    // });
-
-    
-    if(searchTerm){
-      const searchResults = stories.results.filter(story => {
-        if(searchTerm && searchTerm.length > 0){
-          if(story.data.title.toLowerCase().includes(searchTerm)) {
+    const filtered = stories.filter((story) => {
+      if (activeFilter) {
+        return story.data.tags.find((tag) => {
+          if (tag.tag.data.title && tag.tag.data.title === activeFilter){
             return story;
           }
-        }
-        else {
-          return story;
-        }
-      });
+        });
+      } else {
+        return story;
+      }
+    });
 
-      setFilteredStories(searchResults);
-    }
-    else {
-      setFilteredStories(stories.results);
-    }
-   
-  }, [searchTerm, activeFilter]);
+    setFilteredStories(filtered);
+    console.log(stories.results)
+  }, [stories, activeFilter]);
 
   React.useEffect(() => {
     const chunked = chunkArray(filteredStories, 3);
