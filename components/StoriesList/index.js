@@ -26,7 +26,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
     console.log(searchTerm)
 
     const searched = stories.filter(story => {
-      return story.data.title.toLowerCase().includes(searchTerm) 
+      return story.data.title.toLowerCase().includes(searchTerm.toLowerCase()) 
     });
 
     console.log(searched);
