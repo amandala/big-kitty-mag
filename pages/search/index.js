@@ -22,7 +22,7 @@ const Search = props => {
     <div className={styles.Page}>
       <Header pink />
       <div className={styles.Header}>
-        <H2>Search Term</H2>
+        <H2>Searching for</H2>
         <H1>
           {router.query.term}
         </H1>
