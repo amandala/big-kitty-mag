@@ -14,7 +14,7 @@ body {
 }
 
 #mc-embedded-subscribe.button,
-input[type="submit" i] {
+#mc_embed_signup .button {
   background-color: #d60080;
   outline: 0;
   font-family: "BigJohn";
@@ -22,6 +22,8 @@ input[type="submit" i] {
   border: 0;
   height: 30px;
   border-radius: 0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
 }
 
 #mc_embed_signup .button:hover {
@@ -53,4 +55,6 @@ input[type="submit" i] {
   font-family: "BigJohn";
   font-size: 10px;
   padding: 5px 5px 0 5px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
 }
