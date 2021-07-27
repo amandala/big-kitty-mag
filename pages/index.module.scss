@@ -143,14 +143,6 @@
   justify-content: center;
 }
 
-.SearchBoxMobile {
-  display: none;
-  flex-direction: row;
-  margin: 24px 0;
-  align-items: center;
-  justify-content: center;
-}
-
 .Search {
   width: 100%;
   max-width: 200px;
@@ -207,10 +199,6 @@
   .SearchBox {
     display: flex;
     justify-content: flex-start;
-  }
-
-  .SearchBoxMobile {
-    display: none;
   }
 }
 

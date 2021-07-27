@@ -71,11 +71,7 @@ const Home = ({ home, stories, ads, tags }) => {
           } Stories`}</H1>
           <div className={styles.SearchBox}>
             <input className={styles.Search} value={searchTerm} onChange={(d) => setSearchTerm(d.target.value)} />
-            <img className={styles.SearchIcon} src="/searchIcon.svg" />
-          </div>
-           <div className={styles.SearchBoxMobile}>
-            <input className={styles.Search} value={searchTerm} onChange={(d) => setSearchTerm(d.target.value)} />
-            <Link href={`/search?term=${searchTerm}`}><img className={styles.SearchIcon} src="/searchIcon.svg" /></Link>
+             <Link href={`/search?term=${searchTerm}`}><img className={styles.SearchIcon} src="/searchIcon.svg" /></Link>
           </div>
         </div>
         <div className={styles.TagWrapper}>
