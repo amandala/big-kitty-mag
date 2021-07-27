@@ -10,7 +10,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   const [chunkedStories, setChunked] = React.useState(chunkArray(stories, 3));
 
   const addSearchFilter = (list) => {
-    return list.filter(story => story.data.title.toLowerCase().includes(searchTerm.toLowerCase()) || story.data.author.data.name.toLowerCase().includes(searchTerm))
+    return list.filter(story => story.data.title.toLowerCase().includes(searchTerm.toLowerCase()) || story.data.author.data.name.toLowerCase().includes(searchTerm.toLowerCase()))
   }
 
   function chunkArray(myArray, chunk_size) {
