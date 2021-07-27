@@ -19,6 +19,7 @@ body {
   font-family: "BigJohn";
   padding: 2px 18px 0;
   border: 0;
+  height: 30px;
 }
 
 #mc_embed_signup .button:hover {
@@ -33,8 +34,16 @@ body {
 #mc_embed_signup form {
   text-align: unset;
   padding-bottom: 2px;
+  display: flex;
+  margin-top: 10px;
 }
 
 #mc_embed_signup input.email {
   width: auto;
+  border-radius: 0;
+  outline: 0;
+  border: 0;
+  font-family: "BigJohn";
+  font-size: 10px;
+  padding: 5px 5px 0 5px;
 }
