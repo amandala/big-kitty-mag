@@ -13,7 +13,8 @@ body {
   src: url("/fonts/SlimJoe.woff2") format("woff2");
 }
 
-#mc-embedded-subscribe.button {
+#mc-embedded-subscribe.button,
+input[type="submit" i] {
   background-color: #d60080;
   outline: 0;
   font-family: "BigJohn";
