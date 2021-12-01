@@ -1,45 +1,40 @@
-import { useRouter } from "next/router";
-import styles from "./index.module.scss";
-import Header from "../../../components/Header";
-import Head from "../../../components/Head";
-import { H1, Meta, H5, H3, H2, Body } from "../../../components/Typography";
-import Photo from "../../../components/Photo";
-import { Client } from "../../../prismic-configuration.js";
+import { useRouter } from 'next/router'
+import styles from './index.module.scss'
+import Header from '../../../components/Header'
+import Head from '../../../components/Head'
+import { H1, Meta, H5, H3, H2, Body } from '../../../components/Typography'
+import Photo from '../../../components/Photo'
+import { Client } from '../../../prismic-configuration.js'
 
 const Story = props => {
-  const router = useRouter();
-  const { uid } = router.query;
+  const router = useRouter()
+  const { uid } = router.query
 
   if (props.data) {
     return (
       <div className={styles.Page}>
         <Head title={props.data.title}>
           <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
+            rel='apple-touch-icon'
+            sizes='180x180'
+            href='/apple-touch-icon.png'
           />
           <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
+            rel='icon'
+            type='image/png'
+            sizes='32x32'
+            href='/favicon-32x32.png'
           />
           <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
+            rel='icon'
+            type='image/png'
+            sizes='16x16'
+            href='/favicon-16x16.png'
           />
-          <link rel="manifest" href="/site.webmanifest" />
+          <link rel='manifest' href='/site.webmanifest' />
         </Head>
-        <Header pink={true} />
+        <Header pink />
         <main className={styles.Wrapper}>
-          <img
-            className={styles.Ad}
-            src="https://images.prismic.io/big-kitty-mag/8fccb55b-5401-4161-885e-8b40a6cb3f5b_FolkFest.jpg"
-            alt="Folk Fest"
-          />
           <div className={styles.Header}>
             <H1>
               {props.data.title}
@@ -59,72 +54,72 @@ const Story = props => {
           <div>
             <div>
               {props.data.story.map(s => {
-                if (s.type === "heading3") {
+                if (s.type === 'heading3') {
                   return (
                     <H3 className={styles.Heading}>
                       {s.text}
                     </H3>
-                  );
+                  )
                 }
-                if (s.type === "heading2") {
+                if (s.type === 'heading2') {
                   return (
                     <H2 className={styles.Heading}>
                       {s.text}
                     </H2>
-                  );
+                  )
                 }
-                if (s.type === "heading1") {
+                if (s.type === 'heading1') {
                   return (
                     <Body className={styles.PullQuote}>
                       {s.text}
                     </Body>
-                  );
+                  )
                 }
-                if (s.type === "image") {
-                  return <Photo photo={s} />;
+                if (s.type === 'image') {
+                  return <Photo photo={s} />
                 }
                 return (
                   <Body>
                     {s.text}
                   </Body>
-                );
+                )
               })}
             </div>
           </div>
           {props.data.links.length > 0
             ? <div className={[styles.Resources]}>
-                <H1 className={styles.LinksHeading}>Links and Resources</H1>
-                {props.data.links.map(link => {
-                  return link.link.url && link.display_text
+              <H1 className={styles.LinksHeading}>Links and Resources</H1>
+              {props.data.links.map(link => {
+                return link.link.url && link.display_text
                     ? <a
-                        className={styles.Anchor}
-                        href={link.link.url}
-                        target={link.link.target}
+                      className={styles.Anchor}
+                      href={link.link.url}
+                      target={link.link.target}
                       >
-                        <Body className={styles.Link}>
-                          {link.display_text}
-                        </Body>
-                      </a>
-                    : null;
-                })}
-              </div>
+                      <Body className={styles.Link}>
+                        {link.display_text}
+                      </Body>
+                    </a>
+                    : null
+              })}
+            </div>
             : null}
         </main>
       </div>
-    );
+    )
   }
-  return null;
-};
-
-export async function getServerSideProps(ctx) {
-  const req = ctx.req;
-
-  const home = await Client(req).getByUID("article", ctx.params.uid, {
-    fetchLinks: ["author.name"],
-  });
-  return {
-    props: home,
-  };
+  return null
 }
 
-export default Story;
+export async function getServerSideProps (ctx) {
+  const req = ctx.req
+
+  const home = await Client(req).getByUID('article', ctx.params.uid, {
+    fetchLinks: ['author.name']
+  })
+  return {
+    props: home
+  }
+}
+
+export default Story
