@@ -8,7 +8,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
   const [adNumber, setAdNumber] = React.useState(0);
   const [filteredStories, setFilteredStories] = React.useState([]);
   const [chunkedStories, setChunked] = React.useState(chunkArray(stories, 3));
-
+  console.log(stories);
   const addSearchFilter = (list) => {
     return list.filter(story => story.data.title.toLowerCase().includes(searchTerm.toLowerCase()) || story.data.author.data.name.toLowerCase().includes(searchTerm.toLowerCase()))
   }
@@ -31,7 +31,8 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
     const filtered = stories.filter((story) => {
       if (activeFilter) {
         return story.data.tags.find((tag) => {
-          if (tag.tag.data.title && tag.tag.data.title === activeFilter){
+          console.log(tag);
+          if (tag.tag.slug && tag.tag.slug.toLowerCase() === activeFilter.toLowerCase()){
             return story
           }
         });
