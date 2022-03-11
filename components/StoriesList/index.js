@@ -31,7 +31,7 @@ const StoriesList = ({ stories, activeFilter, ads, searchTerm }) => {
     const filtered = stories.filter((story) => {
       if (activeFilter) {
         return story.data.tags.find((tag) => {
-          console.log(tag);
+          
           if (tag.tag.slug && tag.tag.slug.toLowerCase() === activeFilter.toLowerCase()){
             return story
           }
